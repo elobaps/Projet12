@@ -1,0 +1,43 @@
+{
+    "coord": {
+        "lon": -0.58,
+        "lat": 44.84
+    },
+    "weather": [
+        {
+            "id": 804,
+            "main": "Clouds",
+            "description": "couvert",
+            "icon": "04d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 13.73,
+        "feels_like": 12.15,
+        "temp_min": 11.11,
+        "temp_max": 14.44,
+        "pressure": 1025,
+        "humidity": 82
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 2.6,
+        "deg": 220
+    },
+    "clouds": {
+        "all": 90
+    },
+    "dt": 1583922432,
+    "sys": {
+        "type": 1,
+        "id": 6450,
+        "country": "FR",
+        "sunrise": 1583907703,
+        "sunset": 1583949778
+    },
+    "timezone": 3600,
+    "id": 3031582,
+    "name": "Bordeaux",
+    "cod": 200
+}
