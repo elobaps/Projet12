@@ -8,6 +8,8 @@ target 'Projet12' do
 
   # Pods for Projet12
   pod 'SwiftLint', '0.32.0'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
 
   target 'Projet12Tests' do
     inherit! :search_paths

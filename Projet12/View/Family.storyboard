@@ -11,8 +11,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="huB-MX-RBY">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="w6y-1G-OBM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tabBarController id="uh2-FO-VbB" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="FamilyTabBarController" id="uh2-FO-VbB" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nth-gH-9n9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -26,6 +25,7 @@
                         <segue destination="cgH-eE-dUQ" kind="relationship" relationship="viewControllers" id="GK9-87-hjX"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w6y-1G-OBM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-268" y="-174"/>
         </scene>
@@ -38,6 +38,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.093506656590000001" green="0.58884245160000004" blue="0.61545801160000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="kB4-EO-5Zh" kind="relationship" relationship="rootViewController" id="hNf-sZ-jaI"/>
@@ -50,7 +53,7 @@
         <!--Bienvenue Philippe-->
         <scene sceneID="gDQ-a4-tXJ">
             <objects>
-                <viewController id="kB4-EO-5Zh" sceneMemberID="viewController">
+                <viewController id="kB4-EO-5Zh" customClass="FamilyHomeViewController" customModule="Projet12" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cgY-oL-L3Z">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,7 +74,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pHU-ia-pOo"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Bienvenue Philippe" id="3Ig-DF-gd4"/>
+                    <navigationItem key="navigationItem" title="Bienvenue Philippe" id="3Ig-DF-gd4">
+                        <barButtonItem key="rightBarButtonItem" image="logout" id="5xG-za-poW">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="logOutButtonTapped:" destination="kB4-EO-5Zh" id="Gwk-LU-oq4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jS1-tQ-6LM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -157,6 +167,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.093506656590000001" green="0.58884245160000004" blue="0.61545801160000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="0Cs-mp-xXQ" kind="relationship" relationship="rootViewController" id="VUi-Ul-CHU"/>
@@ -175,6 +188,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.093506656590000001" green="0.58884245160000004" blue="0.61545801160000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="W5B-8D-z6m" kind="relationship" relationship="rootViewController" id="ycW-Hr-zgL"/>
@@ -186,6 +202,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="logout" width="35" height="35"/>
         <image name="tabbar1" width="48" height="32"/>
         <image name="tabbar2" width="48" height="32"/>
         <image name="tabbar3" width="48" height="32"/>

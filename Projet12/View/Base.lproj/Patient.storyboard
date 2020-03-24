@@ -11,7 +11,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="3NJ-9X-NsY">
             <objects>
-                <tabBarController id="9MM-iU-tkk" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="PatientTabBarController" id="9MM-iU-tkk" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IRd-O8-VhW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -76,6 +76,26 @@
                                     <constraint firstAttribute="bottom" secondItem="2gU-IV-9DG" secondAttribute="bottom" constant="5" id="oCi-UX-BwK"/>
                                     <constraint firstAttribute="height" constant="60" id="uVU-uj-mzG"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="2" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.87797430200000004" green="0.87797430200000004" blue="0.87797430200000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="06V-uV-Ww0">
                                 <rect key="frame" x="20" y="171" width="280" height="178"/>
@@ -197,6 +217,9 @@
                     <navigationItem key="navigationItem" title="Bonjour Elodie-Anne" id="dVg-sI-THc">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="logout" id="sdz-5d-RmX">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="logOutButtonTapped:" destination="EbT-M5-DtG" id="dYH-HV-Csf"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -470,7 +493,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="B9c-co-Pj2"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <state key="normal" title="Ajouter une note">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>

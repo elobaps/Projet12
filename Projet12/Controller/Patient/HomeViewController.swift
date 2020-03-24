@@ -24,6 +24,7 @@ class HomeViewController: UIViewController {
     private let weatherService = WeatherService()
     private var quote: QuoteData?
     private let quoteService = QuoteService()
+    private let authService: AuthService = AuthService()
     
     // MARK: - View Life Cycle
     
@@ -32,6 +33,18 @@ class HomeViewController: UIViewController {
         configureNavigationBar()
         weatherData()
         quoteData()
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func logOutButtonTapped(_ sender: Any) {
+        authService.signOut { (isSucceded) in
+            if isSucceded {
+                self.navigationController?.popToRootViewController(animated: true)
+            } else {
+                self.presentAlert(titre: "Erreur", message: "La déconnexion a échoué")
+            }
+        }
     }
     
     // MARK: - Methods
@@ -45,7 +58,7 @@ class HomeViewController: UIViewController {
                     self.updateWeather(data: weatherData)
                 }
             case .failure(let error):
-                self.presentAlert(titre: "Error", message: "Service unavailable")
+                self.presentAlert(titre: "Error", message: "Service non disponible")
                 print(error)
             }
         }
@@ -60,7 +73,7 @@ class HomeViewController: UIViewController {
                     self.updateQuote(data: quoteData)
                 }
             case .failure(let error):
-                self.presentAlert(titre: "Error", message: "Service unavailable")
+                self.presentAlert(titre: "Error", message: "Service non disponible")
                 print(error)
             }
         }
