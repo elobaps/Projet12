@@ -21,7 +21,6 @@ extension UIViewController {
             navigationBar?.scrollEdgeAppearance = navBarAppearance
             UINavigationBar.appearance().standardAppearance = navBarAppearance
             UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-
         }
     }
 }

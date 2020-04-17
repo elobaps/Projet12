@@ -17,6 +17,7 @@ final class SignUpViewController: UIViewController {
     @IBOutlet weak var userLastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var idPatientTextField: UITextField!
     
     // MARK: - Properties
     
@@ -24,11 +25,29 @@ final class SignUpViewController: UIViewController {
     var userNavigation: UserNavigation = .none
     
     override func viewDidLoad() {
-          super.viewDidLoad()
-          configureNavigationBar()
-      }
+        super.viewDidLoad()
+        configureNavigationBar()
+        
+        if segmentedControl.isEnabledForSegment(at: 0) {
+            idPatientTextField.isHidden = true
+        }
+    }
     
     // MARK: - Actions
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        userFirstNameTextField.resignFirstResponder()
+        userLastNameTextField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+    }
+    
+    @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        if segmentedControl.selectedSegmentIndex == 2 {
+            idPatientTextField.isHidden = false
+        } else {
+            idPatientTextField.isHidden = true
+        }
+    }
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
         userNavigation = UserNavigation.allCases[segmentedControl.selectedSegmentIndex]
@@ -36,12 +55,42 @@ final class SignUpViewController: UIViewController {
         guard let userLastName = userLastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         guard let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         guard let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
-        authService.signUp(type: userNavigation.rawValue, userFirstName: userFirstName, userLastName: userLastName, email: email, password: password) { (isSucceded) in
-            if isSucceded {
-                self.performSegue(withIdentifier: "unwindToSignInViewController", sender: nil)
-            } else {
-                self.presentAlert(titre: "Erreur", message: "Le mot de passe doit contenir au moins 6 caractères")
+        guard let patientUid = idPatientTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        if segmentedControl.selectedSegmentIndex == 2 {
+            authService.signUpFamily(type: userNavigation.rawValue, userFirstName: userFirstName, userLastName: userLastName, email: email, password: password, patientUid: patientUid) { (isSucceded) in
+                if isSucceded {
+                    self.performSegue(withIdentifier: "unwindToSignInViewController", sender: nil)
+                } else {
+                    self.presentAlert(titre: "Erreur", message: "L'inscription a échoué")
+                }
+            }
+        } else {
+            authService.signUp(type: userNavigation.rawValue, userFirstName: userFirstName, userLastName: userLastName, email: email, password: password) { (isSucceded) in
+                if isSucceded {
+                    self.performSegue(withIdentifier: "unwindToSignInViewController", sender: nil)
+                } else {
+                    self.presentAlert(titre: "Erreur", message: "L'inscription a échoué'")
+                }
             }
         }
+    }
+    
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case userFirstNameTextField:
+            userLastNameTextField.becomeFirstResponder()
+        case userLastNameTextField:
+            emailTextField.becomeFirstResponder()
+        case emailTextField:
+            passwordTextField.becomeFirstResponder()
+        case passwordTextField:
+            idPatientTextField.becomeFirstResponder()
+        default:
+            idPatientTextField.resignFirstResponder()
+        }
+        return true
     }
 }

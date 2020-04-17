@@ -14,15 +14,29 @@
 		2F0522C42417EF2500C52D33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F0522C32417EF2500C52D33 /* Assets.xcassets */; };
 		2F0522C72417EF2500C52D33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F0522C52417EF2500C52D33 /* LaunchScreen.storyboard */; };
 		2F0522D92417F55500C52D33 /* WeatherServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0522D82417F55500C52D33 /* WeatherServiceTestCase.swift */; };
-		2F0522E32418096400C52D33 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0522E22418096400C52D33 /* UIViewController.swift */; };
+		2F0522E32418096400C52D33 /* UIViewController+NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0522E22418096400C52D33 /* UIViewController+NavBar.swift */; };
 		2F143CB9241ABFC900744613 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F143CB8241ABFC900744613 /* Authentication.storyboard */; };
 		2F143CBB241AC22600744613 /* Family.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F143CBA241AC22600744613 /* Family.storyboard */; };
 		2F143CBF241AC66300744613 /* Staff.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F143CBE241AC66300744613 /* Staff.storyboard */; };
+		2F155181242CD3BB0039B179 /* StaffHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F155180242CD3BB0039B179 /* StaffHomeViewController.swift */; };
 		2F2A07322421019C0093AFC3 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2A07312421019C0093AFC3 /* UIViewController+Alert.swift */; };
 		2F2A073424211BC00093AFC3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2A073324211BC00093AFC3 /* Constants.swift */; };
 		2F2A4F54241BC3E700FE4F2F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2A4F53241BC3E700FE4F2F /* SignUpViewController.swift */; };
-		2F6A5E5B242368D50036CADC /* UIView+rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A5E5A242368D50036CADC /* UIView+rounded.swift */; };
+		2F553F2B2433E9280075DB29 /* UITableViewCell+ConvertTimastamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F553F2A2433E9280075DB29 /* UITableViewCell+ConvertTimastamp.swift */; };
+		2F553F2D2433E9FD0075DB29 /* UIViewController+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F553F2C2433E9FD0075DB29 /* UIViewController+Date.swift */; };
+		2F553F2F243626B70075DB29 /* NotesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F553F2E243626B70075DB29 /* NotesServiceTests.swift */; };
+		2F644987243F2402001CA670 /* ShowNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F644986243F2402001CA670 /* ShowNoteViewController.swift */; };
+		2F64498A243F3108001CA670 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F644989243F3108001CA670 /* Report.swift */; };
+		2F64498C243F321C001CA670 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F64498B243F321C001CA670 /* ReportService.swift */; };
+		2F64498E243F326B001CA670 /* ReportFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F64498D243F326B001CA670 /* ReportFirestore.swift */; };
+		2F644990243F5374001CA670 /* ReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F64498F243F5374001CA670 /* ReportsViewController.swift */; };
+		2F680E642447271F006264E6 /* ReportServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F680E632447271F006264E6 /* ReportServiceTests.swift */; };
+		2F680E662447372B006264E6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F680E652447372B006264E6 /* User.swift */; };
+		2F680E682448B138006264E6 /* ReportsPublishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F680E672448B138006264E6 /* ReportsPublishedViewController.swift */; };
 		2F6A5E602428E7DC0036CADC /* AuthServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A5E5F2428E7DC0036CADC /* AuthServiceTests.swift */; };
+		2F6A5E68242B95140036CADC /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A5E67242B95140036CADC /* NotesViewController.swift */; };
+		2F6A5E6C242B9E310036CADC /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F6A5E6B242B9E310036CADC /* NoteTableViewCell.xib */; };
+		2F6A5E6E242B9F7B0036CADC /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A5E6D242B9F7B0036CADC /* NoteTableViewCell.swift */; };
 		2F6D30792418EBB40028CA1A /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D30782418EBB40028CA1A /* WeatherData.swift */; };
 		2F6D307C2418EBDC0028CA1A /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D307B2418EBDC0028CA1A /* Encoder.swift */; };
 		2F6D307E2418EBEC0028CA1A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D307D2418EBEC0028CA1A /* NetworkError.swift */; };
@@ -32,17 +46,24 @@
 		2F6D308624192AE40028CA1A /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D308524192AE40028CA1A /* FakeResponseData.swift */; };
 		2F6D308A24192B5C0028CA1A /* Weather.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F6D308924192B5C0028CA1A /* Weather.json */; };
 		2F6D308E24192C120028CA1A /* URLSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D308D24192C120028CA1A /* URLSessionFake.swift */; };
+		2F7BB991243F54D6009DC279 /* UpdateReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7BB990243F54D6009DC279 /* UpdateReportViewController.swift */; };
+		2F895268243E0282004D4FCB /* NotePublishedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F895266243E0282004D4FCB /* NotePublishedTableViewCell.swift */; };
+		2F895269243E0282004D4FCB /* NotePublishedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F895267243E0282004D4FCB /* NotePublishedTableViewCell.xib */; };
+		2F89526B243E0498004D4FCB /* NotesPublishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F89526A243E0498004D4FCB /* NotesPublishedViewController.swift */; };
 		2F984D3324195D0A001C8463 /* QuoteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F984D3224195D0A001C8463 /* QuoteData.swift */; };
 		2F984D3524195DA2001C8463 /* QuoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F984D3424195DA2001C8463 /* QuoteService.swift */; };
 		2F984D3A24196268001C8463 /* QuoteServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F984D3924196268001C8463 /* QuoteServiceTestCase.swift */; };
 		2F9D013C241BB9E800861F30 /* Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9D013B241BB9E800861F30 /* Scenes.swift */; };
 		2F9D013E241BBC0800861F30 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9D013D241BBC0800861F30 /* AppCoordinator.swift */; };
 		2F9D0140241BC27200861F30 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9D013F241BC27200861F30 /* SignInViewController.swift */; };
-		2FA1ECE8241BC58700537BE1 /* AuthStatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA1ECE7241BC58700537BE1 /* AuthStatic.swift */; };
 		2FA1ECEA241BC6FB00537BE1 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA1ECE9241BC6FB00537BE1 /* AuthService.swift */; };
 		2FA1ECEC241BCF9400537BE1 /* UserDefaults+UserNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA1ECEB241BCF9400537BE1 /* UserDefaults+UserNavigation.swift */; };
 		2FA1ECEE241FD9FE00537BE1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FA1ECED241FD9FE00537BE1 /* GoogleService-Info.plist */; };
 		2FA6D76924226B620065E0C2 /* FamilyHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA6D76824226B620065E0C2 /* FamilyHomeViewController.swift */; };
+		2FAB5924242CD7AF004A76BE /* UpdateNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAB5923242CD7AF004A76BE /* UpdateNoteViewController.swift */; };
+		2FAB5928242CDE25004A76BE /* NoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAB5927242CDE25004A76BE /* NoteService.swift */; };
+		2FAB592A242CDE6C004A76BE /* NoteFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAB5929242CDE6C004A76BE /* NoteFirestore.swift */; };
+		2FAB592C242CFAB9004A76BE /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAB592B242CFAB9004A76BE /* Note.swift */; };
 		2FCD9D5E24225288003E5D1D /* AuthFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD9D5D24225288003E5D1D /* AuthFirestore.swift */; };
 		2FE311D2241A2CB500BF515E /* Quote.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FE311D1241A2CB500BF515E /* Quote.json */; };
 		5ED06AAC8D14FA0763C0C79A /* Pods_Projet12.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9884829214AD6302FE96460 /* Pods_Projet12.framework */; };
@@ -70,15 +91,29 @@
 		2F0522D62417F55500C52D33 /* Projet12Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Projet12Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F0522D82417F55500C52D33 /* WeatherServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceTestCase.swift; sourceTree = "<group>"; };
 		2F0522DA2417F55500C52D33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2F0522E22418096400C52D33 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		2F0522E22418096400C52D33 /* UIViewController+NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavBar.swift"; sourceTree = "<group>"; };
 		2F143CB8241ABFC900744613 /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		2F143CBA241AC22600744613 /* Family.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Family.storyboard; sourceTree = "<group>"; };
 		2F143CBE241AC66300744613 /* Staff.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Staff.storyboard; sourceTree = "<group>"; };
+		2F155180242CD3BB0039B179 /* StaffHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffHomeViewController.swift; sourceTree = "<group>"; };
 		2F2A07312421019C0093AFC3 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		2F2A073324211BC00093AFC3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2F2A4F53241BC3E700FE4F2F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		2F6A5E5A242368D50036CADC /* UIView+rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+rounded.swift"; sourceTree = "<group>"; };
+		2F553F2A2433E9280075DB29 /* UITableViewCell+ConvertTimastamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+ConvertTimastamp.swift"; sourceTree = "<group>"; };
+		2F553F2C2433E9FD0075DB29 /* UIViewController+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Date.swift"; sourceTree = "<group>"; };
+		2F553F2E243626B70075DB29 /* NotesServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesServiceTests.swift; sourceTree = "<group>"; };
+		2F644986243F2402001CA670 /* ShowNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNoteViewController.swift; sourceTree = "<group>"; };
+		2F644989243F3108001CA670 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		2F64498B243F321C001CA670 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
+		2F64498D243F326B001CA670 /* ReportFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportFirestore.swift; sourceTree = "<group>"; };
+		2F64498F243F5374001CA670 /* ReportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsViewController.swift; sourceTree = "<group>"; };
+		2F680E632447271F006264E6 /* ReportServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportServiceTests.swift; sourceTree = "<group>"; };
+		2F680E652447372B006264E6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2F680E672448B138006264E6 /* ReportsPublishedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsPublishedViewController.swift; sourceTree = "<group>"; };
 		2F6A5E5F2428E7DC0036CADC /* AuthServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceTests.swift; sourceTree = "<group>"; };
+		2F6A5E67242B95140036CADC /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
+		2F6A5E6B242B9E310036CADC /* NoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteTableViewCell.xib; sourceTree = "<group>"; };
+		2F6A5E6D242B9F7B0036CADC /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		2F6D30782418EBB40028CA1A /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		2F6D307B2418EBDC0028CA1A /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
 		2F6D307D2418EBEC0028CA1A /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -88,17 +123,24 @@
 		2F6D308524192AE40028CA1A /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
 		2F6D308924192B5C0028CA1A /* Weather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Weather.json; sourceTree = "<group>"; };
 		2F6D308D24192C120028CA1A /* URLSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionFake.swift; sourceTree = "<group>"; };
+		2F7BB990243F54D6009DC279 /* UpdateReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateReportViewController.swift; sourceTree = "<group>"; };
+		2F895266243E0282004D4FCB /* NotePublishedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePublishedTableViewCell.swift; sourceTree = "<group>"; };
+		2F895267243E0282004D4FCB /* NotePublishedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotePublishedTableViewCell.xib; sourceTree = "<group>"; };
+		2F89526A243E0498004D4FCB /* NotesPublishedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesPublishedViewController.swift; sourceTree = "<group>"; };
 		2F984D3224195D0A001C8463 /* QuoteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteData.swift; sourceTree = "<group>"; };
 		2F984D3424195DA2001C8463 /* QuoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteService.swift; sourceTree = "<group>"; };
 		2F984D3924196268001C8463 /* QuoteServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteServiceTestCase.swift; sourceTree = "<group>"; };
 		2F9D013B241BB9E800861F30 /* Scenes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenes.swift; sourceTree = "<group>"; };
 		2F9D013D241BBC0800861F30 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		2F9D013F241BC27200861F30 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		2FA1ECE7241BC58700537BE1 /* AuthStatic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStatic.swift; sourceTree = "<group>"; };
 		2FA1ECE9241BC6FB00537BE1 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		2FA1ECEB241BCF9400537BE1 /* UserDefaults+UserNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+UserNavigation.swift"; sourceTree = "<group>"; };
 		2FA1ECED241FD9FE00537BE1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2FA6D76824226B620065E0C2 /* FamilyHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyHomeViewController.swift; sourceTree = "<group>"; };
+		2FAB5923242CD7AF004A76BE /* UpdateNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNoteViewController.swift; sourceTree = "<group>"; };
+		2FAB5927242CDE25004A76BE /* NoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteService.swift; sourceTree = "<group>"; };
+		2FAB5929242CDE6C004A76BE /* NoteFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteFirestore.swift; sourceTree = "<group>"; };
+		2FAB592B242CFAB9004A76BE /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		2FCD9D5D24225288003E5D1D /* AuthFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirestore.swift; sourceTree = "<group>"; };
 		2FE311D1241A2CB500BF515E /* Quote.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Quote.json; sourceTree = "<group>"; };
 		569C31AEB1B50CF8B58EFB02 /* Pods-Projet12Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Projet12Tests.release.xcconfig"; path = "Target Support Files/Pods-Projet12Tests/Pods-Projet12Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,12 +216,9 @@
 		2F0522CE2417EF9F00C52D33 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2F6D307A2418EBBD0028CA1A /* Patient */,
+				2F6D307A2418EBBD0028CA1A /* Service */,
 				2F6D307B2418EBDC0028CA1A /* Encoder.swift */,
 				2F6D307D2418EBEC0028CA1A /* NetworkError.swift */,
-				2FA1ECE7241BC58700537BE1 /* AuthStatic.swift */,
-				2FA1ECE9241BC6FB00537BE1 /* AuthService.swift */,
-				2FCD9D5D24225288003E5D1D /* AuthFirestore.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -200,11 +239,11 @@
 		2F0522D02417EFE800C52D33 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2F0522C52417EF2500C52D33 /* LaunchScreen.storyboard */,
-				2F0522C02417EF2200C52D33 /* Patient.storyboard */,
-				2F143CB8241ABFC900744613 /* Authentication.storyboard */,
-				2F143CBA241AC22600744613 /* Family.storyboard */,
-				2F143CBE241AC66300744613 /* Staff.storyboard */,
+				2F6A5E6B242B9E310036CADC /* NoteTableViewCell.xib */,
+				2F6A5E6D242B9F7B0036CADC /* NoteTableViewCell.swift */,
+				2F895266243E0282004D4FCB /* NotePublishedTableViewCell.swift */,
+				2F895267243E0282004D4FCB /* NotePublishedTableViewCell.xib */,
+				2FAB5921242CD481004A76BE /* Storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -212,6 +251,7 @@
 		2F0522D12417EFF200C52D33 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2F15517F242CD3A90039B179 /* Staff */,
 				2FA6D76724226B3E0065E0C2 /* Family */,
 				2FE311D3241A40A700BF515E /* Patient */,
 				2F9D013F241BC27200861F30 /* SignInViewController.swift */,
@@ -224,6 +264,8 @@
 			isa = PBXGroup;
 			children = (
 				2F6A5E5C24266CD50036CADC /* FirebaseTests */,
+				2F984D3624196230001C8463 /* Quote */,
+				2F6D308C24192BC40028CA1A /* Weather */,
 				2F0522DA2417F55500C52D33 /* Info.plist */,
 				2F6D308524192AE40028CA1A /* FakeResponseData.swift */,
 				2F6D308D24192C120028CA1A /* URLSessionFake.swift */,
@@ -234,33 +276,95 @@
 		2F0522E12418090200C52D33 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				2F0522E22418096400C52D33 /* UIViewController.swift */,
+				2F0522E22418096400C52D33 /* UIViewController+NavBar.swift */,
 				2FA1ECEB241BCF9400537BE1 /* UserDefaults+UserNavigation.swift */,
 				2F2A07312421019C0093AFC3 /* UIViewController+Alert.swift */,
-				2F6A5E5A242368D50036CADC /* UIView+rounded.swift */,
+				2F553F2A2433E9280075DB29 /* UITableViewCell+ConvertTimastamp.swift */,
+				2F553F2C2433E9FD0075DB29 /* UIViewController+Date.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		2F15517F242CD3A90039B179 /* Staff */ = {
+			isa = PBXGroup;
+			children = (
+				2F155180242CD3BB0039B179 /* StaffHomeViewController.swift */,
+				2F89526A243E0498004D4FCB /* NotesPublishedViewController.swift */,
+				2F644986243F2402001CA670 /* ShowNoteViewController.swift */,
+				2F64498F243F5374001CA670 /* ReportsViewController.swift */,
+				2F7BB990243F54D6009DC279 /* UpdateReportViewController.swift */,
+			);
+			path = Staff;
+			sourceTree = "<group>";
+		};
+		2F644988243F30F4001CA670 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				2F644989243F3108001CA670 /* Report.swift */,
+				2F64498B243F321C001CA670 /* ReportService.swift */,
+				2F64498D243F326B001CA670 /* ReportFirestore.swift */,
+			);
+			path = Report;
 			sourceTree = "<group>";
 		};
 		2F6A5E5C24266CD50036CADC /* FirebaseTests */ = {
 			isa = PBXGroup;
 			children = (
 				2F6A5E5F2428E7DC0036CADC /* AuthServiceTests.swift */,
-				2F984D3624196230001C8463 /* Quote */,
-				2F6D308C24192BC40028CA1A /* Weather */,
+				2F553F2E243626B70075DB29 /* NotesServiceTests.swift */,
+				2F680E632447271F006264E6 /* ReportServiceTests.swift */,
 			);
 			path = FirebaseTests;
 			sourceTree = "<group>";
 		};
-		2F6D307A2418EBBD0028CA1A /* Patient */ = {
+		2F6A5E61242B919A0036CADC /* Weather */ = {
 			isa = PBXGroup;
 			children = (
 				2F6D30782418EBB40028CA1A /* WeatherData.swift */,
 				2F6D30812418EC330028CA1A /* WeatherService.swift */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
+		2F6A5E62242B91A90036CADC /* Quote */ = {
+			isa = PBXGroup;
+			children = (
 				2F984D3224195D0A001C8463 /* QuoteData.swift */,
 				2F984D3424195DA2001C8463 /* QuoteService.swift */,
 			);
-			path = Patient;
+			path = Quote;
+			sourceTree = "<group>";
+		};
+		2F6A5E63242B91B80036CADC /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				2FA1ECE9241BC6FB00537BE1 /* AuthService.swift */,
+				2FCD9D5D24225288003E5D1D /* AuthFirestore.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		2F6A5E64242B92050036CADC /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				2FAB5927242CDE25004A76BE /* NoteService.swift */,
+				2FAB5929242CDE6C004A76BE /* NoteFirestore.swift */,
+				2FAB592B242CFAB9004A76BE /* Note.swift */,
+			);
+			path = Note;
+			sourceTree = "<group>";
+		};
+		2F6D307A2418EBBD0028CA1A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2F644988243F30F4001CA670 /* Report */,
+				2F6A5E64242B92050036CADC /* Note */,
+				2F6A5E63242B91B80036CADC /* Authentication */,
+				2F6A5E62242B91A90036CADC /* Quote */,
+				2F6A5E61242B919A0036CADC /* Weather */,
+				2F680E652447372B006264E6 /* User.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		2F6D308C24192BC40028CA1A /* Weather */ = {
@@ -294,14 +398,29 @@
 			isa = PBXGroup;
 			children = (
 				2FA6D76824226B620065E0C2 /* FamilyHomeViewController.swift */,
+				2F680E672448B138006264E6 /* ReportsPublishedViewController.swift */,
 			);
 			path = Family;
+			sourceTree = "<group>";
+		};
+		2FAB5921242CD481004A76BE /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				2F0522C52417EF2500C52D33 /* LaunchScreen.storyboard */,
+				2F0522C02417EF2200C52D33 /* Patient.storyboard */,
+				2F143CB8241ABFC900744613 /* Authentication.storyboard */,
+				2F143CBA241AC22600744613 /* Family.storyboard */,
+				2F143CBE241AC66300744613 /* Staff.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		2FE311D3241A40A700BF515E /* Patient */ = {
 			isa = PBXGroup;
 			children = (
 				2F0522BE2417EF2200C52D33 /* HomeViewController.swift */,
+				2F6A5E67242B95140036CADC /* NotesViewController.swift */,
+				2FAB5923242CD7AF004A76BE /* UpdateNoteViewController.swift */,
 			);
 			path = Patient;
 			sourceTree = "<group>";
@@ -406,8 +525,10 @@
 				2FA1ECEE241FD9FE00537BE1 /* GoogleService-Info.plist in Resources */,
 				2F0522C72417EF2500C52D33 /* LaunchScreen.storyboard in Resources */,
 				2F143CBB241AC22600744613 /* Family.storyboard in Resources */,
+				2F895269243E0282004D4FCB /* NotePublishedTableViewCell.xib in Resources */,
 				2F0522C42417EF2500C52D33 /* Assets.xcassets in Resources */,
 				2F0522C22417EF2200C52D33 /* Patient.storyboard in Resources */,
+				2F6A5E6C242B9E310036CADC /* NoteTableViewCell.xib in Resources */,
 				2F143CB9241ABFC900744613 /* Authentication.storyboard in Resources */,
 				2F143CBF241AC66300744613 /* Staff.storyboard in Resources */,
 			);
@@ -511,28 +632,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F553F2B2433E9280075DB29 /* UITableViewCell+ConvertTimastamp.swift in Sources */,
 				2F0522BF2417EF2200C52D33 /* HomeViewController.swift in Sources */,
 				2F2A073424211BC00093AFC3 /* Constants.swift in Sources */,
 				2F6D30822418EC330028CA1A /* WeatherService.swift in Sources */,
+				2F89526B243E0498004D4FCB /* NotesPublishedViewController.swift in Sources */,
+				2F64498C243F321C001CA670 /* ReportService.swift in Sources */,
 				2FCD9D5E24225288003E5D1D /* AuthFirestore.swift in Sources */,
 				2F9D013E241BBC0800861F30 /* AppCoordinator.swift in Sources */,
+				2F7BB991243F54D6009DC279 /* UpdateReportViewController.swift in Sources */,
 				2F6D307E2418EBEC0028CA1A /* NetworkError.swift in Sources */,
 				2F6D30802418EC120028CA1A /* ApiConfig.swift in Sources */,
+				2F644990243F5374001CA670 /* ReportsViewController.swift in Sources */,
+				2FAB5928242CDE25004A76BE /* NoteService.swift in Sources */,
+				2F155181242CD3BB0039B179 /* StaffHomeViewController.swift in Sources */,
+				2F64498A243F3108001CA670 /* Report.swift in Sources */,
 				2F9D0140241BC27200861F30 /* SignInViewController.swift in Sources */,
 				2F984D3524195DA2001C8463 /* QuoteService.swift in Sources */,
+				2F644987243F2402001CA670 /* ShowNoteViewController.swift in Sources */,
+				2F680E662447372B006264E6 /* User.swift in Sources */,
+				2F895268243E0282004D4FCB /* NotePublishedTableViewCell.swift in Sources */,
 				2F984D3324195D0A001C8463 /* QuoteData.swift in Sources */,
-				2FA1ECE8241BC58700537BE1 /* AuthStatic.swift in Sources */,
+				2F6A5E6E242B9F7B0036CADC /* NoteTableViewCell.swift in Sources */,
 				2F2A07322421019C0093AFC3 /* UIViewController+Alert.swift in Sources */,
 				2FA6D76924226B620065E0C2 /* FamilyHomeViewController.swift in Sources */,
 				2F2A4F54241BC3E700FE4F2F /* SignUpViewController.swift in Sources */,
+				2FAB592C242CFAB9004A76BE /* Note.swift in Sources */,
 				2FA1ECEC241BCF9400537BE1 /* UserDefaults+UserNavigation.swift in Sources */,
 				2F6D30792418EBB40028CA1A /* WeatherData.swift in Sources */,
 				2F6D307C2418EBDC0028CA1A /* Encoder.swift in Sources */,
+				2FAB5924242CD7AF004A76BE /* UpdateNoteViewController.swift in Sources */,
 				2F9D013C241BB9E800861F30 /* Scenes.swift in Sources */,
-				2F6A5E5B242368D50036CADC /* UIView+rounded.swift in Sources */,
+				2F680E682448B138006264E6 /* ReportsPublishedViewController.swift in Sources */,
 				2F0522BB2417EF2200C52D33 /* AppDelegate.swift in Sources */,
-				2F0522E32418096400C52D33 /* UIViewController.swift in Sources */,
+				2F6A5E68242B95140036CADC /* NotesViewController.swift in Sources */,
+				2FAB592A242CDE6C004A76BE /* NoteFirestore.swift in Sources */,
+				2F64498E243F326B001CA670 /* ReportFirestore.swift in Sources */,
+				2F0522E32418096400C52D33 /* UIViewController+NavBar.swift in Sources */,
 				2FA1ECEA241BC6FB00537BE1 /* AuthService.swift in Sources */,
+				2F553F2D2433E9FD0075DB29 /* UIViewController+Date.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,7 +679,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F984D3A24196268001C8463 /* QuoteServiceTestCase.swift in Sources */,
+				2F553F2F243626B70075DB29 /* NotesServiceTests.swift in Sources */,
 				2F6A5E602428E7DC0036CADC /* AuthServiceTests.swift in Sources */,
+				2F680E642447271F006264E6 /* ReportServiceTests.swift in Sources */,
 				2F0522D92417F55500C52D33 /* WeatherServiceTestCase.swift in Sources */,
 				2F6D308E24192C120028CA1A /* URLSessionFake.swift in Sources */,
 				2F6D308624192AE40028CA1A /* FakeResponseData.swift in Sources */,

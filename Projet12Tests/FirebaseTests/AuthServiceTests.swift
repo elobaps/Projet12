@@ -30,6 +30,9 @@ class AuthServiceTests: XCTestCase {
         func signUp(type: String, userFirstName: String, userLastName: String, email: String, password: String, callback: @escaping (Bool) -> Void) {
             callback(isSuccess)
         }
+        func signUpFamily(type: String, userFirstName: String, userLastName: String, email: String, password: String, patientUid: String, callback: @escaping (Bool) -> Void) {
+            callback(isSuccess)
+        }
         
         func signOut(callback: @escaping (Bool) -> Void) {
             callback(isSuccess)
@@ -38,6 +41,7 @@ class AuthServiceTests: XCTestCase {
         func isUserConnected(callback: @escaping (Bool) -> Void) {
             callback(isSuccess)
         }
+        
     }
     
     // MARK: - Helpers
@@ -66,6 +70,19 @@ class AuthServiceTests: XCTestCase {
             }
         }
     }
+    
+    func testCurrendUID_WhenUserIsSignUpFamily_ThenSouldReturnValue() {
+           let sut: AuthService = AuthService(auth: AuthStub(true))
+           let newUID: String = "Bc3456hDujlo"
+           sut.signUpFamily(type: "staff", userFirstName: "Elo", userLastName: "Parquer", email: "ea.parquer@gmail.com", password: "123456", patientUid: "") { (isSuccess) in
+               if !isSuccess {
+                   XCTFail("Error")
+                   return
+               } else {
+                   XCTAssertTrue(sut.currentUID! != newUID)
+               }
+           }
+       }
     
     func testCurrendUID_WhenUserIsSignIn_ThenSouldReturnValue() {
         let sut: AuthService = AuthService(auth: AuthStub(true))

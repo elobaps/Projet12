@@ -38,6 +38,7 @@
                                     </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" red="0.093506656590000001" green="0.58884245160000004" blue="0.61545801160000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="HRO-8u-DfT" secondAttribute="trailing" constant="15" id="5C1-eY-tp9"/>
                                     <constraint firstAttribute="height" constant="124" id="9E7-hy-cDZ"/>
@@ -57,7 +58,7 @@
                                         <color key="textColor" red="0.32937228680000002" green="0.32943451400000001" blue="0.32936835289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8mz-Ei-NR8">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8mz-Ei-NR8">
                                         <rect key="frame" x="0.0" y="44" width="280" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -108,6 +109,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="kZa-em-143" firstAttribute="trailing" secondItem="Sv8-lU-XyH" secondAttribute="trailing" id="Di8-JP-nvM"/>
                             <constraint firstItem="Sv8-lU-XyH" firstAttribute="trailing" secondItem="JqJ-Yr-pxK" secondAttribute="trailing" constant="20" id="L2b-cw-nQy"/>
@@ -123,6 +125,9 @@
                             <constraint firstItem="Sv8-lU-XyH" firstAttribute="bottom" secondItem="5Z3-qh-3Cr" secondAttribute="bottom" constant="10" id="yNE-NV-M5e"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Sv8-lU-XyH"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="fSb-95-7qy" appends="YES" id="5m4-C9-Qiq"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="8mz-Ei-NR8" id="Euo-z6-Vbp"/>
@@ -131,6 +136,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NCm-to-NvF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="fSb-95-7qy">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="rJH-w3-3t4" id="uuD-kr-a9A"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="95.625" y="96.126760563380287"/>
         </scene>
@@ -164,9 +174,12 @@
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="segmentedControlValueChanged:" destination="xE3-s3-peX" eventType="valueChanged" id="LVH-5n-rET"/>
+                                </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="5k2-dt-LJh">
-                                <rect key="frame" x="20" y="161.5" width="280" height="225"/>
+                                <rect key="frame" x="20" y="137" width="280" height="274"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S'inscrire" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I08-Ke-Hvf">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="29"/>
@@ -174,25 +187,45 @@
                                         <color key="textColor" red="0.32937228680000002" green="0.32943451400000001" blue="0.32936835289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Prénom" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BhB-yi-5yA">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Prénom" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BhB-yi-5yA">
                                         <rect key="frame" x="0.0" y="44" width="280" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="xE3-s3-peX" id="Qgj-kp-ShD"/>
+                                        </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nom" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3x1-Na-4m3">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nom" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3x1-Na-4m3">
                                         <rect key="frame" x="0.0" y="93" width="280" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="xE3-s3-peX" id="xDh-HF-jyV"/>
+                                        </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gZe-aE-9LP">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gZe-aE-9LP">
                                         <rect key="frame" x="0.0" y="142" width="280" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="xE3-s3-peX" id="x0C-ch-LNU"/>
+                                        </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mot de passe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mtw-aV-G68">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mot de passe" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mtw-aV-G68">
                                         <rect key="frame" x="0.0" y="191" width="280" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="xE3-s3-peX" id="Inv-FL-k1g"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID patient" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZTb-fj-QPQ">
+                                        <rect key="frame" x="0.0" y="240" width="280" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="xE3-s3-peX" id="YsS-9Q-U2u"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -212,6 +245,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Pgn-RJ-gzL" firstAttribute="trailing" secondItem="GKf-2X-V0I" secondAttribute="trailing" constant="20" id="2dH-k8-Rer"/>
                             <constraint firstItem="GKf-2X-V0I" firstAttribute="leading" secondItem="Pgn-RJ-gzL" secondAttribute="leading" constant="20" id="6bL-QE-XLr"/>
@@ -227,9 +261,13 @@
                             <constraint firstItem="5k2-dt-LJh" firstAttribute="leading" secondItem="Pgn-RJ-gzL" secondAttribute="leading" constant="20" id="yCq-tU-bOd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Pgn-RJ-gzL"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Bap-rt-hmf" appends="YES" id="uYR-on-HrQ"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="gZe-aE-9LP" id="yYI-6f-y2Y"/>
+                        <outlet property="idPatientTextField" destination="ZTb-fj-QPQ" id="j4A-lh-pDP"/>
                         <outlet property="passwordTextField" destination="mtw-aV-G68" id="v3C-zy-AsR"/>
                         <outlet property="segmentedControl" destination="GKf-2X-V0I" id="7Ky-7e-Dal"/>
                         <outlet property="userFirstNameTextField" destination="BhB-yi-5yA" id="XXU-CS-jHQ"/>
@@ -239,6 +277,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eeJ-eS-Vd2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="okE-os-Hfa" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="Bap-rt-hmf">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="xE3-s3-peX" id="nF8-3K-DTH"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="816" y="96"/>
         </scene>

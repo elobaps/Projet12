@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak private var bordeauxInfoLabel: UILabel!
     @IBOutlet weak var quoteLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var uidPatientLabel: UILabel!
     
     // MARK: - Properties
     
@@ -25,12 +26,14 @@ class HomeViewController: UIViewController {
     private var quote: QuoteData?
     private let quoteService = QuoteService()
     private let authService: AuthService = AuthService()
+    private let reportService: ReportService = ReportService()
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
+        loadedUserData()
         weatherData()
         quoteData()
     }
@@ -48,6 +51,23 @@ class HomeViewController: UIViewController {
     }
     
     // MARK: - Methods
+    
+    private func loadedUserData() {
+        guard let uid = authService.currentUID else { return }
+        reportService.getUserData(with: uid) { (result) in
+            switch result {
+            case .success(let userData):
+                DispatchQueue.main.async {
+                    guard let userFirstName: String = userData[0].firstName as String? else { return }
+                    self.navigationItem.title = "Bonjour \(userFirstName)"
+                    self.uidPatientLabel.text = "N° \(uid)"
+                }
+            case .failure(let error):
+                self.presentAlert(titre: "Erreur", message: "Le chargement des informations a échoué")
+                print(error)
+            }
+        }
+    }
     
     /// method that manages the data of the network call
     private func weatherData() {

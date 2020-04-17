@@ -28,6 +28,11 @@ final class SignInViewController: UIViewController {
     
     // MARK: - Actions
     
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+    }
+    
     @IBAction func signInButtonTapped(_ sender: Any) {
         let userNavigation = UserNavigation.allCases[segmentedControl.selectedSegmentIndex]
         guard let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }

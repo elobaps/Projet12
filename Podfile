@@ -10,6 +10,7 @@ target 'Projet12' do
   pod 'SwiftLint', '0.32.0'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  pod 'IQKeyboardManagerSwift'
 
   target 'Projet12Tests' do
     inherit! :search_paths
