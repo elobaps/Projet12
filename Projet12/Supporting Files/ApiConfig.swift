@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// ApiKey
 struct ApiConfig {
     static let openWeatherMapApiKey = "bc28315cbd92c40c3f5228d908c3749a"
 }
