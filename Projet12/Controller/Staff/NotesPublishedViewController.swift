@@ -32,6 +32,8 @@ class NotesPublishedViewController: UIViewController {
         loadedNotes()
     }
     
+    // MARK: - Methods
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
          guard let updateNoteVC = segue.destination as? ShowNoteViewController else { return }
              updateNoteVC.noteRepresentable = noteRepresentable

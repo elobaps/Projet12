@@ -16,4 +16,6 @@ struct Note: Equatable {
     var text: String
     var published: Bool
     var timestamp: Double
+    var firstName: String
+    var lastName: String
 }

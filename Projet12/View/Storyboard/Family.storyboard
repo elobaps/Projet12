@@ -225,15 +225,15 @@ Nous somme joignable au :
             </objects>
             <point key="canvasLocation" x="334" y="1426"/>
         </scene>
-        <!--View Controller-->
+        <!--Show Report View Controller-->
         <scene sceneID="vq8-hM-1Zd">
             <objects>
-                <viewController id="dZJ-3e-49e" sceneMemberID="viewController">
+                <viewController id="dZJ-3e-49e" customClass="ShowReportViewController" customModule="Projet12" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gd8-Ab-gup">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fne-ad-Gf8">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Fne-ad-Gf8">
                                 <rect key="frame" x="20" y="101" width="280" height="418"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bco-Nv-wM2">
@@ -242,8 +242,14 @@ Nous somme joignable au :
                                         <color key="textColor" red="0.32937228680000002" green="0.32943451400000001" blue="0.32936835289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ybb-PY-77a">
-                                        <rect key="frame" x="0.0" y="19" width="280" height="399"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkK-vO-ZF2">
+                                        <rect key="frame" x="0.0" y="29" width="280" height="26.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ybb-PY-77a">
+                                        <rect key="frame" x="0.0" y="65.5" width="280" height="352.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -262,6 +268,11 @@ Nous somme joignable au :
                         <viewLayoutGuide key="safeArea" id="xiy-kz-1bn"/>
                     </view>
                     <navigationItem key="navigationItem" id="JL5-Nh-hzD"/>
+                    <connections>
+                        <outlet property="reportTextView" destination="ybb-PY-77a" id="YeF-fC-WAg"/>
+                        <outlet property="timestampLabel" destination="Bco-Nv-wM2" id="Bwb-35-VmT"/>
+                        <outlet property="titleLabel" destination="zkK-vO-ZF2" id="iEk-ex-iDI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5fi-DS-aCn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

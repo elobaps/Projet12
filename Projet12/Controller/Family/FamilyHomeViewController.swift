@@ -11,7 +11,11 @@ import Firebase
 
 class FamilyHomeViewController: UIViewController {
     
+    // MARK: - Outlet
+    
     @IBOutlet weak var nameLabel: UILabel!
+    
+    // MARK: - Properties
     
     private let authService = AuthService()
     private let reportService: ReportService = ReportService()
@@ -24,6 +28,8 @@ class FamilyHomeViewController: UIViewController {
         loadedUserData()
     }
     
+    // MARK: - Action
+    
     @IBAction func logOutButtonTapped(_ sender: Any) {
         authService.signOut { (isSucceded) in
             if isSucceded {
@@ -33,6 +39,8 @@ class FamilyHomeViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: - Method
     
     func loadedUserData() {
         guard let uid = authService.currentUID else { return }

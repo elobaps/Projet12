@@ -64,8 +64,13 @@
 		2FAB5928242CDE25004A76BE /* NoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAB5927242CDE25004A76BE /* NoteService.swift */; };
 		2FAB592A242CDE6C004A76BE /* NoteFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAB5929242CDE6C004A76BE /* NoteFirestore.swift */; };
 		2FAB592C242CFAB9004A76BE /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAB592B242CFAB9004A76BE /* Note.swift */; };
+		2FAFB3F024505DB300617373 /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAFB3EF24505DB300617373 /* ProfilViewController.swift */; };
+		2FBA1040244F1C3800FB3481 /* PatientsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBA103F244F1C3800FB3481 /* PatientsListViewController.swift */; };
+		2FBA1042244F216100FB3481 /* ShowUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBA1041244F216100FB3481 /* ShowUserViewController.swift */; };
 		2FCD9D5E24225288003E5D1D /* AuthFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD9D5D24225288003E5D1D /* AuthFirestore.swift */; };
 		2FE311D2241A2CB500BF515E /* Quote.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FE311D1241A2CB500BF515E /* Quote.json */; };
+		2FE92D40244CB07C00D278E7 /* ShowReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE92D3F244CB07C00D278E7 /* ShowReportViewController.swift */; };
+		2FE92D42244CE27B00D278E7 /* UIViewController+SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE92D41244CE27B00D278E7 /* UIViewController+SegmentedControl.swift */; };
 		5ED06AAC8D14FA0763C0C79A /* Pods_Projet12.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9884829214AD6302FE96460 /* Pods_Projet12.framework */; };
 /* End PBXBuildFile section */
 
@@ -141,8 +146,13 @@
 		2FAB5927242CDE25004A76BE /* NoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteService.swift; sourceTree = "<group>"; };
 		2FAB5929242CDE6C004A76BE /* NoteFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteFirestore.swift; sourceTree = "<group>"; };
 		2FAB592B242CFAB9004A76BE /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		2FAFB3EF24505DB300617373 /* ProfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilViewController.swift; sourceTree = "<group>"; };
+		2FBA103F244F1C3800FB3481 /* PatientsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsListViewController.swift; sourceTree = "<group>"; };
+		2FBA1041244F216100FB3481 /* ShowUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowUserViewController.swift; sourceTree = "<group>"; };
 		2FCD9D5D24225288003E5D1D /* AuthFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirestore.swift; sourceTree = "<group>"; };
 		2FE311D1241A2CB500BF515E /* Quote.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Quote.json; sourceTree = "<group>"; };
+		2FE92D3F244CB07C00D278E7 /* ShowReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowReportViewController.swift; sourceTree = "<group>"; };
+		2FE92D41244CE27B00D278E7 /* UIViewController+SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SegmentedControl.swift"; sourceTree = "<group>"; };
 		569C31AEB1B50CF8B58EFB02 /* Pods-Projet12Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Projet12Tests.release.xcconfig"; path = "Target Support Files/Pods-Projet12Tests/Pods-Projet12Tests.release.xcconfig"; sourceTree = "<group>"; };
 		67A67DC88272EDF589B00DA3 /* Pods-Projet12.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Projet12.debug.xcconfig"; path = "Target Support Files/Pods-Projet12/Pods-Projet12.debug.xcconfig"; sourceTree = "<group>"; };
 		98E6784737B48B0F155B69AB /* Pods-Projet12Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Projet12Tests.debug.xcconfig"; path = "Target Support Files/Pods-Projet12Tests/Pods-Projet12Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -281,6 +291,7 @@
 				2F2A07312421019C0093AFC3 /* UIViewController+Alert.swift */,
 				2F553F2A2433E9280075DB29 /* UITableViewCell+ConvertTimastamp.swift */,
 				2F553F2C2433E9FD0075DB29 /* UIViewController+Date.swift */,
+				2FE92D41244CE27B00D278E7 /* UIViewController+SegmentedControl.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -293,6 +304,8 @@
 				2F644986243F2402001CA670 /* ShowNoteViewController.swift */,
 				2F64498F243F5374001CA670 /* ReportsViewController.swift */,
 				2F7BB990243F54D6009DC279 /* UpdateReportViewController.swift */,
+				2FBA103F244F1C3800FB3481 /* PatientsListViewController.swift */,
+				2FBA1041244F216100FB3481 /* ShowUserViewController.swift */,
 			);
 			path = Staff;
 			sourceTree = "<group>";
@@ -399,6 +412,7 @@
 			children = (
 				2FA6D76824226B620065E0C2 /* FamilyHomeViewController.swift */,
 				2F680E672448B138006264E6 /* ReportsPublishedViewController.swift */,
+				2FE92D3F244CB07C00D278E7 /* ShowReportViewController.swift */,
 			);
 			path = Family;
 			sourceTree = "<group>";
@@ -421,6 +435,7 @@
 				2F0522BE2417EF2200C52D33 /* HomeViewController.swift */,
 				2F6A5E67242B95140036CADC /* NotesViewController.swift */,
 				2FAB5923242CD7AF004A76BE /* UpdateNoteViewController.swift */,
+				2FAFB3EF24505DB300617373 /* ProfilViewController.swift */,
 			);
 			path = Patient;
 			sourceTree = "<group>";
@@ -634,6 +649,7 @@
 			files = (
 				2F553F2B2433E9280075DB29 /* UITableViewCell+ConvertTimastamp.swift in Sources */,
 				2F0522BF2417EF2200C52D33 /* HomeViewController.swift in Sources */,
+				2FE92D42244CE27B00D278E7 /* UIViewController+SegmentedControl.swift in Sources */,
 				2F2A073424211BC00093AFC3 /* Constants.swift in Sources */,
 				2F6D30822418EC330028CA1A /* WeatherService.swift in Sources */,
 				2F89526B243E0498004D4FCB /* NotesPublishedViewController.swift in Sources */,
@@ -643,8 +659,10 @@
 				2F7BB991243F54D6009DC279 /* UpdateReportViewController.swift in Sources */,
 				2F6D307E2418EBEC0028CA1A /* NetworkError.swift in Sources */,
 				2F6D30802418EC120028CA1A /* ApiConfig.swift in Sources */,
+				2FBA1042244F216100FB3481 /* ShowUserViewController.swift in Sources */,
 				2F644990243F5374001CA670 /* ReportsViewController.swift in Sources */,
 				2FAB5928242CDE25004A76BE /* NoteService.swift in Sources */,
+				2FBA1040244F1C3800FB3481 /* PatientsListViewController.swift in Sources */,
 				2F155181242CD3BB0039B179 /* StaffHomeViewController.swift in Sources */,
 				2F64498A243F3108001CA670 /* Report.swift in Sources */,
 				2F9D0140241BC27200861F30 /* SignInViewController.swift in Sources */,
@@ -661,9 +679,11 @@
 				2FA1ECEC241BCF9400537BE1 /* UserDefaults+UserNavigation.swift in Sources */,
 				2F6D30792418EBB40028CA1A /* WeatherData.swift in Sources */,
 				2F6D307C2418EBDC0028CA1A /* Encoder.swift in Sources */,
+				2FE92D40244CB07C00D278E7 /* ShowReportViewController.swift in Sources */,
 				2FAB5924242CD7AF004A76BE /* UpdateNoteViewController.swift in Sources */,
 				2F9D013C241BB9E800861F30 /* Scenes.swift in Sources */,
 				2F680E682448B138006264E6 /* ReportsPublishedViewController.swift in Sources */,
+				2FAFB3F024505DB300617373 /* ProfilViewController.swift in Sources */,
 				2F0522BB2417EF2200C52D33 /* AppDelegate.swift in Sources */,
 				2F6A5E68242B95140036CADC /* NotesViewController.swift in Sources */,
 				2FAB592A242CDE6C004A76BE /* NoteFirestore.swift in Sources */,

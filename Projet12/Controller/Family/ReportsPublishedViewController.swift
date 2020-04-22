@@ -10,11 +10,17 @@ import UIKit
 
 class ReportsPublishedViewController: UIViewController {
     
+    // MARK: - Outlet
+    
     @IBOutlet weak var reportsTableView: UITableView!
+    
+    // MARK: - Properties
     
     var reports = [Report]()
     var reportRepresentable: Report?
     private let reportService: ReportService = ReportService()
+    
+    // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +32,13 @@ class ReportsPublishedViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadedReports()
+    }
+    
+    // MARK: - Methods
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let updateReportVC = segue.destination as? ShowReportViewController else { return }
+        updateReportVC.reportRepresentable = reportRepresentable
     }
     
     private func loadedReports() {

@@ -22,9 +22,10 @@ final class SignInViewController: UIViewController {
     weak var delegate: AuthenticationDataPassingDelegate?
     
     override func viewDidLoad() {
-          super.viewDidLoad()
-          configureNavigationBar()
-      }
+        super.viewDidLoad()
+        configureNavigationBar()
+        configureSegmentedControl()
+    }
     
     // MARK: - Actions
     

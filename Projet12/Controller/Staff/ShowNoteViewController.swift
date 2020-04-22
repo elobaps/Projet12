@@ -19,8 +19,7 @@ class ShowNoteViewController: UIViewController {
     // MARK: - Properties
     
     var noteRepresentable: Note?
-    var notes = [Note]()
-    private let noteService: NoteService = NoteService()
+//    var notes = [Note]()
     
     // MARK: - View Life Cycle
     

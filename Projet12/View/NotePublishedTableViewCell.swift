@@ -10,16 +10,14 @@ import UIKit
 
 class NotePublishedTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var firstNameLabel: UILabel!
-    @IBOutlet weak var lastNameLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
+    // MARK: - Outlets
     
-    private let reportService: ReportService = ReportService()
-    var users = [User]()
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     var note: Note? {
         didSet {
-            setupUserName()
+            nameLabel.text = "\(note?.firstName ?? "") \(note?.lastName ?? "")"
             let date = note?.timestamp
             dateLabel.text = convertTimestampToString(timestamp: date ?? 0)
         }
@@ -29,25 +27,14 @@ class NotePublishedTableViewCell: UITableViewCell {
         didSet {
             let date = report?.timestamp
             dateLabel.text = convertTimestampToString(timestamp: date ?? 0)
-            firstNameLabel.text = report?.title
-            lastNameLabel.isHidden = true
+            nameLabel.text = report?.title
         }
     }
     
-    func setupUserName() {
-        if let id = note?.fromUid {
-            reportService.getUsers { (result) in
-                switch result {
-                case .success(let users) :
-                    for user in users {
-                        self.firstNameLabel.text = user.firstName
-                        self.lastNameLabel.text = user.lastName
-                    }
-                case .failure(let error) :
-                    print(error)
-                }
-            }
+    var user: User? {
+        didSet {
+            dateLabel.isHidden = true
+            nameLabel.text = "\(user?.lastName ?? "") \(user?.firstName ?? "")"
         }
     }
-    
 }

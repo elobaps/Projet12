@@ -10,6 +10,8 @@ import UIKit
 
 class UpdateReportViewController: UIViewController {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var reportTextView: UITextView!
@@ -31,9 +33,11 @@ class UpdateReportViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-           super.viewWillAppear(animated)
-           loadedUsers()
-       }
+        super.viewWillAppear(animated)
+        loadedUsers()
+    }
+    
+    // MARK: - Actions
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard timestampLabel.text != nil else { return }
@@ -49,6 +53,8 @@ class UpdateReportViewController: UIViewController {
         }
     }
     
+    // MARK: - Methods
+    
     func updateReport() {
         guard let reportRepresentable = reportRepresentable else { return }
         titleTextField.text = reportRepresentable.title
@@ -56,8 +62,13 @@ class UpdateReportViewController: UIViewController {
         let date = reportRepresentable.timestamp
         timestampLabel.text = convertTimestampToString(timestamp: date)
         publishedSwitch.isSelected = reportRepresentable.published
-        let uid = reportRepresentable.forUid
-        usersPickerView.selectedRow(inComponent: Int(uid) ?? 0)
+//        usersPickerView.selectRow(reportRepresentable.forUid, inComponent: 0, animated: false)
+        
+        //        let userIndex = usersPickerView.selectedRow(inComponent: 0)
+        //        let test = users[userIndex].uid
+        //        if user != nil {
+        //            reportRepresentable.forUid = user
+        //        }
         
         if reportRepresentable.published == true {
             publishedSwitch.setOn(true, animated: false)
@@ -101,5 +112,6 @@ extension UpdateReportViewController: UIPickerViewDataSource, UIPickerViewDelega
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         user = users[row].uid
+
     }
 }

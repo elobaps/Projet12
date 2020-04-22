@@ -9,6 +9,9 @@
 import UIKit
 
 class ReportsViewController: UIViewController {
+    
+    // MARK: - Outlet
+    
     @IBOutlet weak var reportsTableView: UITableView! { didSet { reportsTableView.tableFooterView = UIView() }}
     
     // MARK: - Properties
@@ -32,6 +35,8 @@ class ReportsViewController: UIViewController {
         loadedReports()
     }
     
+    // MARK: - Actions
+    
     @IBAction private func unwindToReportViewController(_ segue: UIStoryboardSegue) {}
     
     @IBAction func addReportButtonTapped(_ sender: Any) {
@@ -48,6 +53,8 @@ class ReportsViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: - Methods
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let updateReportVC = segue.destination as? UpdateReportViewController else { return }

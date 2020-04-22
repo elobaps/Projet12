@@ -14,6 +14,7 @@ struct Constants {
         static let showNoteSegue = "SegueToShowNote"
         static let updateReportSegue = "SegueToUpdateReport"
         static let showToReportSegue = "SegueToShowReport"
+        static let showToUserSegue = "SegueToShowUser"
     }
     
     struct FStore {
@@ -27,6 +28,8 @@ struct Constants {
         static let userPatientUID = "patientUid"
         static let noteCollectionName = "notes"
         static let identifier = "identifier"
+        static let noteFirstName = "firstName"
+        static let noteLastName = "lastName"
         static let titleNote = "titleNote"
         static let textNote = "textNote"
         static let publishedNote = "publishedNote"

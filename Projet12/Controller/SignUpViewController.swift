@@ -26,7 +26,6 @@ final class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBar()
         
         if segmentedControl.isEnabledForSegment(at: 0) {
             idPatientTextField.isHidden = true
@@ -34,6 +33,7 @@ final class SignUpViewController: UIViewController {
     }
     
     // MARK: - Actions
+    
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         userFirstNameTextField.resignFirstResponder()
         userLastNameTextField.resignFirstResponder()

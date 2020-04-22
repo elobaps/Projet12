@@ -35,6 +35,8 @@ class NotesViewController: UIViewController {
         loadedNotes()
     }
     
+    // MARK: - Actions
+    
     @IBAction private func unwindToNoteViewController(_ segue: UIStoryboardSegue) {}
     
     @IBAction func addNoteButtonTapped(_ sender: UIButton) {
@@ -51,6 +53,8 @@ class NotesViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: - Methods
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let updateNoteVC = segue.destination as? UpdateNoteViewController else { return }

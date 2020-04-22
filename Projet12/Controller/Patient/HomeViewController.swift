@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var uidPatientLabel: UILabel!
     
+    @IBOutlet weak var navSecondView: UIView!
     // MARK: - Properties
     
     private var city: WeatherData?
@@ -36,6 +37,13 @@ class HomeViewController: UIViewController {
         loadedUserData()
         weatherData()
         quoteData()
+        
+        DispatchQueue.main.async {
+        self.navSecondView.layer.cornerRadius = 12
+        self.navSecondView.clipsToBounds = true
+        self.navSecondView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        }
+
     }
     
     // MARK: - Actions
@@ -58,8 +66,7 @@ class HomeViewController: UIViewController {
             switch result {
             case .success(let userData):
                 DispatchQueue.main.async {
-                    guard let userFirstName: String = userData[0].firstName as String? else { return }
-                    self.navigationItem.title = "Bonjour \(userFirstName)"
+                    self.navigationItem.title = "Bonjour \(userData[0].firstName)"
                     self.uidPatientLabel.text = "N° \(uid)"
                 }
             case .failure(let error):

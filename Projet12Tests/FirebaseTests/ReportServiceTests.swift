@@ -18,6 +18,8 @@ class ReportServiceTests: XCTestCase {
         private let isSuccess: Bool
         
         var report = [Report]()
+        var user = [User]()
+        
         var currentUID: String? { return isSuccess ? "AbCde34z2Abd" : nil }
         
         init(_ isSuccess: Bool) {
@@ -33,13 +35,35 @@ class ReportServiceTests: XCTestCase {
         }
         
         func getReportsPublished(callback: @escaping (Result<[Report], Error>) -> Void) {
-            
+            report.append(Report(fromUid: "", identifier: "", title: "", text: "", published: true, timestamp: 0, forUid: ""))
+        }
+        
+        func getUserData(with uid: String, callback: @escaping (Result<[User], Error>) -> Void) {
+            user.append(User(uid: "", email: "", firstName: "", lastName: "", type: "", password: ""))
+        }
+        
+        func updateUserInformations(userFirstName: String, userLastName: String, email: String, password: String, callback: @escaping (Bool) -> Void) {
+            callback(isSuccess)
         }
         
         func getUsers(callback: @escaping (Result<[User], Error>) -> Void) {
+            user.append(User(uid: "", email: "", firstName: "", lastName: "", type: "", password: ""))
         }
         
-        func getUsersWithFilter(id: String, callback: @escaping (Result<[User], Error>) -> Void) {
+        func getUsersWithFamilyFilter(callback: @escaping (Result<[User], Error>) -> Void) {
+            user.append(User(uid: "", email: "", firstName: "", lastName: "", type: "", password: ""))
+        }
+        
+        func getUsersWithPatientFilter(callback: @escaping (Result<[User], Error>) -> Void) {
+            user.append(User(uid: "", email: "", firstName: "", lastName: "", type: "", password: ""))
+        }
+        
+        func deleteAccount(callback: @escaping (Bool) -> Void) {
+            callback(isSuccess)
+        }
+        
+        func deletedUser(callback: @escaping (Bool) -> Void) {
+            callback(isSuccess)
         }
         
         func deletedReport(identifier: String, callback: @escaping (Bool) -> Void) {
@@ -50,6 +74,18 @@ class ReportServiceTests: XCTestCase {
             callback(isSuccess)
         }
     }
+    
+    // MARK: - Methods
+    
+    func createUser() -> User {
+        return User(uid: "", email: "", firstName: "", lastName: "", type: "", password: "")
+    }
+    
+    func createReport() -> Report {
+        return Report(fromUid: "", identifier: "", title: "", text: "", published: true, timestamp: 0, forUid: "")
+    }
+    
+    // MARK: - Tests
     
     func testCurrendUID_WhenUserIsConnected_ThenSouldReturnValue() {
         let sut: ReportService = ReportService(report: ReportStub(true))
@@ -72,7 +108,7 @@ class ReportServiceTests: XCTestCase {
     
     func testGetReports_WhenLoadingData_ThenShouldReturnValue() {
         let sut: ReportService = ReportService(report: ReportStub(true))
-        let report = Report(fromUid: "", identifier: "", title: "", text: "", published: true, timestamp: 0, forUid: "")
+        let report = createReport()
         sut.getReports { (result) in
             switch result {
             case .success(let loadedReports):
@@ -82,6 +118,107 @@ class ReportServiceTests: XCTestCase {
             }
         }
     }
+    
+    func testGetReportsPublished_WhenLoadingData_ThenShouldReturnValue() {
+        let sut: ReportService = ReportService(report: ReportStub(true))
+        let report = createReport()
+        sut.getReportsPublished { (result) in
+            switch result {
+            case .success(let loadedReportsPublished):
+                XCTAssertEqual(loadedReportsPublished, [report])
+            case .failure:
+                XCTFail("Error")
+            }
+        }
+    }
+    
+    func testGetUserData_WhenLoadingData_ThenShouldReturnValue() {
+        let sut: ReportService = ReportService(report: ReportStub(true))
+        let user = createUser()
+        sut.getUserData(with: "AbCde34z2Abd") { (result) in
+            switch result {
+            case .success(let userData):
+                XCTAssertEqual(userData, [user])
+            case .failure:
+                XCTFail("Error")
+            }
+        }
+    }
+    
+    func testUpdateUserInformations_WhenLoadingData_ThenShouldReturnValue() {
+        let sut: ReportService = ReportService(report: ReportStub(true))
+        sut.updateUserInformations(userFirstName: "", userLastName: "", email: "", password: "") { (isSuccess) in
+           if !isSuccess {
+                XCTFail("Error")
+                return
+            } else {
+                XCTAssert(true)
+            }
+        }
+    }
+    
+    func testGetUsers_WhenLoadingData_ThenShouldReturnValue() {
+        let sut: ReportService = ReportService(report: ReportStub(true))
+        let users = createUser()
+        sut.getUsers { (result) in
+            switch result {
+            case .success(let usersData):
+                XCTAssertEqual(usersData, [users])
+            case .failure:
+                XCTFail("Error")
+            }
+        }
+    }
+    
+    func testGetUsersWithFamilyFilter_WhenLoadingData_ThenShouldReturnValue() {
+        let sut: ReportService = ReportService(report: ReportStub(true))
+        let users = createUser()
+        sut.getUsersWithFamilyFilter { (result) in
+            switch result {
+            case .success(let usersWithFilter):
+                XCTAssertEqual(usersWithFilter, [users])
+            case .failure:
+                XCTFail("Error")
+            }
+        }
+    }
+    
+    func testGetUsersWithPatientFilter_WhenLoadingData_ThenShouldReturnValue() {
+        let sut: ReportService = ReportService(report: ReportStub(true))
+        let users = createUser()
+        sut.getUsersWithPatientFilter { (result) in
+            switch result {
+            case .success(let usersWithFilter):
+                XCTAssertEqual(usersWithFilter, [users])
+            case .failure:
+                XCTFail("Error")
+            }
+        }
+    }
+    
+    func testDeletedSuccess_WhenUserRemovesHisProfil_ThenShouldReturnValue() {
+        let sut: ReportService = ReportService(report: ReportStub(true))
+        sut.deleteAccount { (isSuccess) in
+            if !isSuccess {
+                XCTFail("Error")
+                return
+            } else {
+                XCTAssertTrue(true)
+            }
+        }
+    }
+    
+    func testDeletedSuccess_WhenUserRemovesHisInformationsData_ThenShouldReturnValue() {
+          let sut: ReportService = ReportService(report: ReportStub(true))
+          sut.deletedUser { (isSuccess) in
+              if !isSuccess {
+                  XCTFail("Error")
+                  return
+              } else {
+                  XCTAssertTrue(true)
+              }
+          }
+      }
     
     func testDeletedSuccess_WhenUserRemovesHisReport_ThenShouldReturnValue() {
         let sut: ReportService = ReportService(report: ReportStub(true))
@@ -93,7 +230,6 @@ class ReportServiceTests: XCTestCase {
             } else {
                 XCTAssertTrue(true)
             }
-            
         }
     }
     
@@ -108,5 +244,4 @@ class ReportServiceTests: XCTestCase {
             }
         }
     }
-    
 }

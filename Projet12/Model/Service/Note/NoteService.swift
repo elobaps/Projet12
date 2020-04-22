@@ -10,7 +10,7 @@ import Foundation
 
 protocol NoteType {
     var currentUID: String? { get }
-    func savedNote(fromUid: String, identifier: String, title: String, text: String, timestamp: TimeInterval, published: Bool, callback: @escaping (Bool) -> Void)
+    func savedNote(identifier: String?, userFirstName: String, userLastName: String, title: String, text: String, timestamp: TimeInterval, published: Bool, callback: @escaping (Bool) -> Void)
     func getNotes(callback: @escaping (Result<[Note], Error>) -> Void)
     func getNotesPublished(callback: @escaping (Result<[Note], Error>) -> Void)
     func deletedNote(identifier: String, callback: @escaping (Bool) -> Void)
@@ -26,8 +26,8 @@ class NoteService {
         self.note = note
     }
     
-    func savedNote(fromUid: String, identifier: String, title: String, text: String, timestamp: TimeInterval, published: Bool, callback: @escaping (Bool) -> Void) {
-        note.savedNote(fromUid: fromUid, identifier: identifier, title: title, text: text, timestamp: timestamp, published: published, callback: callback)
+    func savedNote(identifier: String?, userFirstName: String, userLastName: String, title: String, text: String, timestamp: TimeInterval, published: Bool, callback: @escaping (Bool) -> Void) {
+        note.savedNote(identifier: identifier, userFirstName: userFirstName, userLastName: userLastName, title: title, text: text, timestamp: timestamp, published: published, callback: callback)
     }
     
     func getNotes(callback: @escaping (Result<[Note], Error>) -> Void) {

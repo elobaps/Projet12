@@ -16,6 +16,9 @@ enum UserNavigation: String, CaseIterable, Codable {
 }
 
 final class AppCoordinator {
+    
+    // MARK: - Properties
+    
     private unowned var appDelegate: AppDelegate
     private let scenes = Scenes()
     //var userNavigation: UserNavigation = .none
@@ -25,6 +28,8 @@ final class AppCoordinator {
     init(appDelegate: AppDelegate) {
         self.appDelegate = appDelegate
     }
+    
+    // MARK: - Methods
     
     func start() {
         appDelegate.window = UIWindow(frame: UIScreen.main.bounds)

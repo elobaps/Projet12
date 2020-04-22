@@ -10,11 +10,16 @@ import Foundation
 import Firebase
 
 class AuthFirestore: AuthType {
+    
+    // MARK: - Properties
+    
     var currentUID: String? {
         return Firebase.Auth.auth().currentUser?.uid
     }
     
     let db = Firestore.firestore()
+    
+    // MARK: - Methods
     
     func signIn(type: String, email: String, password: String, callback: @escaping (Bool) -> Void) {
         Firebase.Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
@@ -23,7 +28,7 @@ class AuthFirestore: AuthType {
                 self.db.collection(Constants.FStore.userCollectionName).whereField("uid", isEqualTo: self.currentUID ?? String()).getDocuments { (querySnapchot, error) in
                     guard let data = querySnapchot?.documents.first?.data() else {
                         callback(false)
-                         print(error ?? "erreur")
+                        print(error ?? "erreur")
                         return
                     }
                     guard let userType = data[Constants.FStore.userType] as? String else {
@@ -46,7 +51,28 @@ class AuthFirestore: AuthType {
                 print(error ?? "erreur")
                 callback(false)
             } else {
-                self.db.collection(Constants.FStore.userCollectionName).addDocument(data: [Constants.FStore.userFirstNameField: userFirstName, Constants.FStore.userLastNameField: userLastName, Constants.FStore.userEmailField: email, Constants.FStore.userPasswordField: password, Constants.FStore.userType: type, Constants.FStore.userUID: authResult?.user.uid ?? ""]) { (error) in
+                guard let uid = Auth.auth().currentUser?.uid else { return }
+                let data = [Constants.FStore.userFirstNameField: userFirstName, Constants.FStore.userLastNameField: userLastName, Constants.FStore.userEmailField: email, Constants.FStore.userPasswordField: password, Constants.FStore.userType: type, Constants.FStore.userUID: uid]
+                self.db.collection(Constants.FStore.userCollectionName).document("\(uid)").setData(data) { (error) in
+                    if error != nil {
+                        print(error ?? "erreur")
+                        callback(false)
+                    } else {
+                        callback(true)
+                    }
+                }
+            }
+        }
+    }
+    
+    func signUpFamily(type: String, userFirstName: String, userLastName: String, email: String,
+                      password: String, patientUid: String, callback: @escaping (Bool) -> Void) {
+        Firebase.Auth.auth().createUser(withEmail: email, password: password) {(authResult, error) in
+            if error != nil {
+                print(error ?? "erreur")
+                callback(false)
+            } else {
+                self.db.collection(Constants.FStore.userCollectionName).addDocument(data: [Constants.FStore.userFirstNameField: userFirstName, Constants.FStore.userLastNameField: userLastName, Constants.FStore.userEmailField: email, Constants.FStore.userPasswordField: password, Constants.FStore.userType: type, Constants.FStore.userUID: authResult?.user.uid ?? "", Constants.FStore.userPatientUID: patientUid]) { (error) in
                     if error != nil {
                         print(error ?? "erreur")
                         callback(false)
@@ -58,26 +84,6 @@ class AuthFirestore: AuthType {
             }
         }
     }
-    
-    func signUpFamily(type: String, userFirstName: String, userLastName: String, email: String,
-                      password: String, patientUid: String, callback: @escaping (Bool) -> Void) {
-           Firebase.Auth.auth().createUser(withEmail: email, password: password) {(authResult, error) in
-               if error != nil {
-                   print(error ?? "erreur")
-                   callback(false)
-               } else {
-                self.db.collection(Constants.FStore.userCollectionName).addDocument(data: [Constants.FStore.userFirstNameField: userFirstName, Constants.FStore.userLastNameField: userLastName, Constants.FStore.userEmailField: email, Constants.FStore.userPasswordField: password, Constants.FStore.userType: type, Constants.FStore.userUID: authResult?.user.uid ?? "", Constants.FStore.userPatientUID: patientUid]) { (error) in
-                       if error != nil {
-                           print(error ?? "erreur")
-                           callback(false)
-                       } else {
-                           print(authResult?.user ?? "")
-                           callback(true)
-                       }
-                   }
-               }
-           }
-       }
     
     func signOut(callback: @escaping (Bool) -> Void) {
         do {

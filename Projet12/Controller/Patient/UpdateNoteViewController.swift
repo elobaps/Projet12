@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class UpdateNoteViewController: UIViewController {
     
@@ -20,8 +21,11 @@ class UpdateNoteViewController: UIViewController {
     // MARK: - Properties
     
     var noteRepresentable: Note?
+    var user: User?
     var notes = [Note]()
     private let noteService: NoteService = NoteService()
+    private let authService: AuthService = AuthService()
+    private let reportService: ReportService = ReportService()
     
     // MARK: - View Life Cycle
     
@@ -47,14 +51,25 @@ class UpdateNoteViewController: UIViewController {
         guard let title = titleTextField.text else { return }
         guard let noteText = noteTextView.text else { return }
         let publishedNote = publishedSwitch.isOn
-        let identifier = UUID().uuidString
-            noteService.savedNote(fromUid: "", identifier: identifier, title: title, text: noteText, timestamp: 0, published: publishedNote) { (isSuccess) in
-                if isSuccess {
-                    self.performSegue(withIdentifier: "unwindToNoteViewController", sender: nil)
-                } else {
-                    self.presentAlert(titre: "Erreur", message: "L'enregistrement a échoué")
+        
+        guard let uid = authService.currentUID else { return }
+        reportService.getUserData(with: uid) { (result) in
+            switch result {
+            case .success(let userData):
+                DispatchQueue.main.async {
+                    self.noteService.savedNote(identifier: self.noteRepresentable?.identifier, userFirstName: userData[0].firstName, userLastName: userData[0].lastName, title: title, text: noteText, timestamp: 0, published: publishedNote) { (isSuccess) in
+                        if isSuccess {
+                            self.performSegue(withIdentifier: "unwindToNoteViewController", sender: nil)
+                        } else {
+                            self.presentAlert(titre: "Erreur", message: "L'enregistrement a échoué")
+                        }
+                    }
                 }
+            case .failure(let error):
+                self.presentAlert(titre: "Erreur", message: "Le chargement des informations a échoué")
+                print(error)
             }
+        }
     }
     
     // MARK: - Method

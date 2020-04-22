@@ -24,16 +24,16 @@ class NotesServiceTests: XCTestCase {
             self.isSuccess = isSuccess
         }
         
-        func savedNote(fromUid: String, identifier: String, title: String, text: String, timestamp: TimeInterval, published: Bool, callback: @escaping (Bool) -> Void) {
+        func savedNote(identifier: String?, userFirstName: String, userLastName: String, title: String, text: String, timestamp: TimeInterval, published: Bool, callback: @escaping (Bool) -> Void) {
             callback(isSuccess)
         }
         
         func getNotes(callback: @escaping (Result<[Note], Error>) -> Void) {
-            note.append(Note(fromUid: "", identifier: "", title: "", text: "", published: true, timestamp: 0))
+            note.append(Note(fromUid: "", identifier: "", title: "", text: "", published: true, timestamp: 0, firstName: "", lastName: ""))
         }
         
         func getNotesPublished(callback: @escaping (Result<[Note], Error>) -> Void) {
-            note.append(Note(fromUid: "", identifier: "", title: "", text: "", published: true, timestamp: 0))
+            note.append(Note(fromUid: "", identifier: "", title: "", text: "", published: true, timestamp: 0, firstName: "", lastName: ""))
         }
         
         func deletedNote(identifier: String, callback: @escaping (Bool) -> Void) {
@@ -45,6 +45,14 @@ class NotesServiceTests: XCTestCase {
         }
     }
     
+    // MARK: - Methods
+
+    func createNote() -> Note {
+        return Note(fromUid: "", identifier: "", title: "", text: "", published: true, timestamp: 0, firstName: "", lastName: "")
+    }
+    
+    // MARK: - Tests
+    
     func testCurrendUID_WhenUserIsConnected_ThenSouldReturnValue() {
         let sut: NoteService = NoteService(note: NoteStub(true))
         let expectedUID: String = "AbCde34z2Abd"
@@ -54,7 +62,7 @@ class NotesServiceTests: XCTestCase {
     func testNoteSuccessBackup_WhenUserSaveNote_ThenSouldReturnValue() {
         let sut: NoteService = NoteService(note: NoteStub(true))
         let expectedBackup: Bool = true
-        sut.savedNote(fromUid: "", identifier: "", title: "Jeudi", text: "hello", timestamp: 0, published: true) { (isSuccess) in
+        sut.savedNote(identifier: "", userFirstName: "", userLastName: "", title: "Jeudi", text: "hello", timestamp: 0, published: true) { (isSuccess) in
             if !isSuccess {
                 XCTFail("Error")
                 return
@@ -66,7 +74,7 @@ class NotesServiceTests: XCTestCase {
     
     func testGetNotes_WhenLoadingData_ThenShouldReturnValue() {
         let sut: NoteService = NoteService(note: NoteStub(true))
-        let note = Note(fromUid: "", identifier: "", title: "", text: "", published: true, timestamp: 0)
+        let note = createNote()
         sut.getNotes { (result) in
             switch result {
             case .success(let loadedNote):
@@ -79,7 +87,7 @@ class NotesServiceTests: XCTestCase {
     
     func testGetNotesPublished_WhenLoadingData_ThenShouldReturnValue() {
         let sut: NoteService = NoteService(note: NoteStub(true))
-        let note = Note(fromUid: "", identifier: "", title: "", text: "", published: true, timestamp: 0)
+        let note = createNote()
         sut.getNotesPublished { (result) in
             switch result {
             case .success(let loadedNotePublished):
