@@ -218,6 +218,7 @@
                         <outlet property="bordeauxImageView" destination="iWh-c3-KxT" id="cOb-Au-CYD"/>
                         <outlet property="bordeauxInfoLabel" destination="SEu-yk-ZPL" id="Fbj-G6-LSR"/>
                         <outlet property="bordeauxTempLabel" destination="DM4-bj-qr1" id="v3c-rC-gTc"/>
+                        <outlet property="navSecondView" destination="7Bj-sA-uJJ" id="9g4-Jn-Ca9"/>
                         <outlet property="quoteLabel" destination="4rH-VC-gFa" id="A93-Pw-RCM"/>
                     </connections>
                 </viewController>
@@ -310,6 +311,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="navSecondView" destination="shZ-XY-3BX" id="M5k-7W-Hcw"/>
                         <outlet property="reportsTableView" destination="3tB-xa-q0H" id="yy8-ZM-TjY"/>
                         <segue destination="6PV-rl-RPF" kind="show" identifier="SegueToUpdateReport" id="hda-wD-PKb"/>
                     </connections>
@@ -500,7 +502,7 @@
                                 <rect key="frame" x="0.0" y="91" width="320" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retrouvez ici les notes publiées par les patients." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dg1-zc-elX">
-                                        <rect key="frame" x="18" y="9" width="284" height="41"/>
+                                        <rect key="frame" x="18" y="4" width="284" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.96078431369999995" green="0.96084433790000001" blue="0.96066969629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -511,7 +513,7 @@
                                     <constraint firstItem="Dg1-zc-elX" firstAttribute="leading" secondItem="Hyb-qB-VO7" secondAttribute="leading" constant="18" id="2Jf-0K-NFJ"/>
                                     <constraint firstAttribute="trailing" secondItem="Dg1-zc-elX" secondAttribute="trailing" constant="18" id="BQV-8z-O3A"/>
                                     <constraint firstAttribute="height" constant="60" id="FP0-ck-24Q"/>
-                                    <constraint firstAttribute="bottom" secondItem="Dg1-zc-elX" secondAttribute="bottom" constant="10" id="Z4C-ly-WP0"/>
+                                    <constraint firstAttribute="bottom" secondItem="Dg1-zc-elX" secondAttribute="bottom" constant="15" id="Z4C-ly-WP0"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes patients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uh2-Db-u3s">
@@ -549,6 +551,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Notes" id="M4n-yz-lbZ"/>
                     <connections>
+                        <outlet property="navSecondView" destination="Hyb-qB-VO7" id="PN8-Iz-2pE"/>
                         <outlet property="notesTableView" destination="26j-dm-7Qk" id="1EY-Hu-mgR"/>
                         <segue destination="CN8-Y1-tSM" kind="show" identifier="SegueToShowNote" id="mgy-ky-BmE"/>
                     </connections>
@@ -618,6 +621,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Patients" id="k72-4Q-ey0"/>
                     <connections>
+                        <outlet property="navSecondView" destination="Dvh-sL-uK6" id="jlr-aR-CgN"/>
                         <outlet property="patientsTableView" destination="urv-lq-Bpn" id="0o0-RU-Vra"/>
                         <segue destination="qHq-Vc-txh" kind="showDetail" identifier="SegueToShowUser" id="Cbk-d2-uny"/>
                     </connections>

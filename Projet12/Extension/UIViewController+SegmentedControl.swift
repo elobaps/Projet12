@@ -10,6 +10,7 @@ import UIKit
 
 extension UIViewController {
     
+    /// Update the design of segmented control in authentication
     func configureSegmentedControl() {
         
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)

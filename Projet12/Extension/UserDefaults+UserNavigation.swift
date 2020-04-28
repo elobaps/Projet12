@@ -13,11 +13,14 @@ enum UserDefaultsKeys: String {
 }
 
 extension UserDefaults {
+    
+    /// Method that saves information for persistance
     func set(userNavigation: UserNavigation, forKey key: String) {
         guard let data = try? JSONEncoder().encode(userNavigation) else { return }
         UserDefaults.standard.set(data, forKey: key)
     }
     
+    /// Method that retrieves information for user navigation
     private func getUserNavigation(forKey key: String) -> UserNavigation {
         guard let data = UserDefaults.standard.data(forKey: key) else { return .none }
         guard let userNavigation = try? JSONDecoder().decode(UserNavigation.self, from: data) else { return .none }

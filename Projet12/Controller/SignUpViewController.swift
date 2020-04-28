@@ -12,12 +12,12 @@ final class SignUpViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var userFirstNameTextField: UITextField!
-    @IBOutlet weak var userLastNameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var idPatientTextField: UITextField!
+    @IBOutlet private weak var segmentedControl: UISegmentedControl!
+    @IBOutlet private weak var userFirstNameTextField: UITextField!
+    @IBOutlet private weak var userLastNameTextField: UITextField!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var idPatientTextField: UITextField!
     
     // MARK: - Properties
     
@@ -34,14 +34,14 @@ final class SignUpViewController: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+    @IBAction private func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         userFirstNameTextField.resignFirstResponder()
         userLastNameTextField.resignFirstResponder()
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
     }
     
-    @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+    @IBAction private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         if segmentedControl.selectedSegmentIndex == 2 {
             idPatientTextField.isHidden = false
         } else {
@@ -49,7 +49,7 @@ final class SignUpViewController: UIViewController {
         }
     }
     
-    @IBAction func signUpButtonTapped(_ sender: Any) {
+    @IBAction private func signUpButtonTapped(_ sender: Any) {
         userNavigation = UserNavigation.allCases[segmentedControl.selectedSegmentIndex]
         guard let userFirstName = userFirstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         guard let userLastName = userLastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
@@ -74,7 +74,6 @@ final class SignUpViewController: UIViewController {
             }
         }
     }
-    
 }
 
 extension SignUpViewController: UITextFieldDelegate {

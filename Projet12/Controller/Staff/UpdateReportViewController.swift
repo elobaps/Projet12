@@ -8,21 +8,28 @@
 
 import UIKit
 
-class UpdateReportViewController: UIViewController {
+final class UpdateReportViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var timestampLabel: UILabel!
-    @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var reportTextView: UITextView!
-    @IBOutlet weak var publishedSwitch: UISwitch!
-    @IBOutlet weak var usersPickerView: UIPickerView!
+    @IBOutlet private weak var timestampLabel: UILabel!
+    @IBOutlet private weak var titleTextField: UITextField!
+    @IBOutlet private weak var reportTextView: UITextView!
+    @IBOutlet private weak var publishedSwitch: UISwitch!
+    @IBOutlet private weak var usersPickerView: UIPickerView!
     
     var reportRepresentable: Report?
     var reports = [Report]()
     private let reportService: ReportService = ReportService()
+    private let userService: UserService = UserService()
     var users = [User]()
-    var user = String()
+    var selectedRow: Int?
+    lazy var userId: String = {
+        if self.reportRepresentable != nil {
+            return self.reportRepresentable?.forUid ?? ""
+        }
+        return String()
+    }()
     
     // MARK: - View Life Cycle
     
@@ -39,12 +46,17 @@ class UpdateReportViewController: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func saveButtonTapped(_ sender: Any) {
+    @IBAction private func saveButtonTapped(_ sender: Any) {
         guard timestampLabel.text != nil else { return }
         guard let title = titleTextField.text else { return }
         guard let reportText = reportTextView.text else { return }
+        //        guard userId != String() else { return }
         let publishedReport = publishedSwitch.isOn
-        reportService.savedReport(identifier: reportRepresentable?.identifier, forUid: user, title: title, text: reportText, timestamp: 0, published: publishedReport) { (isSuccess) in
+        guard userId != String() else {
+            presentAlert(titre: "Attention", message: "Veuillez renseigner un utilisateur à qui attribué le compte rendu")
+            return
+        }
+        self.reportService.savedReport(identifier: self.reportRepresentable?.identifier, forUid: self.userId, title: title, text: reportText, timestamp: 0, published: publishedReport) { (isSuccess) in
             if isSuccess {
                 self.performSegue(withIdentifier: "unwindToReportViewController", sender: nil)
             } else {
@@ -55,31 +67,23 @@ class UpdateReportViewController: UIViewController {
     
     // MARK: - Methods
     
-    func updateReport() {
+    private func updateReport() {
         guard let reportRepresentable = reportRepresentable else { return }
         titleTextField.text = reportRepresentable.title
         reportTextView.text = reportRepresentable.text
         let date = reportRepresentable.timestamp
-        timestampLabel.text = convertTimestampToString(timestamp: date)
-        publishedSwitch.isSelected = reportRepresentable.published
-//        usersPickerView.selectRow(reportRepresentable.forUid, inComponent: 0, animated: false)
-        
-        //        let userIndex = usersPickerView.selectedRow(inComponent: 0)
-        //        let test = users[userIndex].uid
-        //        if user != nil {
-        //            reportRepresentable.forUid = user
-        //        }
+        timestampLabel.text = convertTimestampToString(timestamp: date ?? 0)
+        publishedSwitch.isSelected = reportRepresentable.published ?? true
         
         if reportRepresentable.published == true {
             publishedSwitch.setOn(true, animated: false)
         } else {
             publishedSwitch.setOn(false, animated: false)
         }
-        
     }
     
     private func loadedUsers() {
-        reportService.getUsersWithFamilyFilter { (result) in
+        userService.getUsersWithFamilyFilter { (result) in
             switch result {
             case .success(let users):
                 DispatchQueue.main.async {
@@ -111,7 +115,7 @@ extension UpdateReportViewController: UIPickerViewDataSource, UIPickerViewDelega
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        user = users[row].uid
-
+        userId = users[row].uid
+        selectedRow = row
     }
 }

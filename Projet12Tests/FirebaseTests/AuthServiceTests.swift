@@ -42,6 +42,10 @@ class AuthServiceTests: XCTestCase {
             callback(isSuccess)
         }
         
+        func resetPassword(email: String, completion: @escaping (Bool) -> Void) {
+            completion(true)
+        }
+        
     }
     
     // MARK: - Helpers
@@ -72,17 +76,17 @@ class AuthServiceTests: XCTestCase {
     }
     
     func testCurrendUID_WhenUserIsSignUpFamily_ThenSouldReturnValue() {
-           let sut: AuthService = AuthService(auth: AuthStub(true))
-           let newUID: String = "Bc3456hDujlo"
-           sut.signUpFamily(type: "staff", userFirstName: "Elo", userLastName: "Parquer", email: "ea.parquer@gmail.com", password: "123456", patientUid: "") { (isSuccess) in
-               if !isSuccess {
-                   XCTFail("Error")
-                   return
-               } else {
-                   XCTAssertTrue(sut.currentUID! != newUID)
-               }
-           }
-       }
+        let sut: AuthService = AuthService(auth: AuthStub(true))
+        let newUID: String = "Bc3456hDujlo"
+        sut.signUpFamily(type: "staff", userFirstName: "Elo", userLastName: "Parquer", email: "ea.parquer@gmail.com", password: "123456", patientUid: "") { (isSuccess) in
+            if !isSuccess {
+                XCTFail("Error")
+                return
+            } else {
+                XCTAssertTrue(sut.currentUID! != newUID)
+            }
+        }
+    }
     
     func testCurrendUID_WhenUserIsSignIn_ThenSouldReturnValue() {
         let sut: AuthService = AuthService(auth: AuthStub(true))
@@ -106,6 +110,19 @@ class AuthServiceTests: XCTestCase {
                 return
             } else {
                 XCTAssertTrue(sut.currentUID! == expectedUID)
+            }
+        }
+    }
+    
+    func testResetPassword_WhenUserWantsToResetHisPassword_ThenSouldReturnValue() {
+        let sut: AuthService = AuthService(auth: AuthStub(true))
+        let expectPassword: String = "ea.parquer@gmail.com"
+        sut.resetPassword(email: expectPassword) { (isSuccess) in
+            if !isSuccess {
+                XCTFail("Error")
+                return
+            } else {
+                XCTAssertTrue(true)
             }
         }
     }

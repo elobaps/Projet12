@@ -9,6 +9,8 @@
 import UIKit
 
 extension UIViewController {
+    
+    /// Update the design of navigation bar
     func configureNavigationBar() {
         if #available(iOS 13.0, *) {
             DispatchQueue.main.async {

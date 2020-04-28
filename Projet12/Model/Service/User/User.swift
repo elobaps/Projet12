@@ -15,5 +15,4 @@ struct User: Equatable {
     var firstName: String
     var lastName: String
     var type: String
-    var password: String
 }

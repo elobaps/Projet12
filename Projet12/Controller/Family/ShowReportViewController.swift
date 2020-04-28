@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ShowReportViewController: UIViewController {
+final class ShowReportViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var timestampLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var reportTextView: UITextView!
+    @IBOutlet private weak var timestampLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var reportTextView: UITextView!
     
     // MARK: - Properties
     
@@ -31,11 +31,11 @@ class ShowReportViewController: UIViewController {
     
     // MARK: - Method
     
-    func updateReport() {
+    private func updateReport() {
         guard let reportRepresentable = reportRepresentable else { return }
         titleLabel.text = reportRepresentable.title
         reportTextView.text = reportRepresentable.text
         let date = reportRepresentable.timestamp
-        timestampLabel.text = convertTimestampToString(timestamp: date)
+        timestampLabel.text = convertTimestampToString(timestamp: date ?? 0)
     }
 }

@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ReportsPublishedViewController: UIViewController {
+final class ReportsPublishedViewController: UIViewController {
     
     // MARK: - Outlet
     
-    @IBOutlet weak var reportsTableView: UITableView!
+    @IBOutlet private weak var reportsTableView: UITableView!
+    @IBOutlet private weak var navSecondView: UIView!
     
     // MARK: - Properties
     
@@ -25,6 +26,7 @@ class ReportsPublishedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
+        navSecondView.configureNavSecondView()
         
         reportsTableView.register(UINib(nibName: Constants.Cell.notePublishedNibName, bundle: nil), forCellReuseIdentifier: Constants.Cell.notePublishedCellIdentifier)
     }
@@ -86,7 +88,7 @@ extension ReportsPublishedViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let label = UILabel()
-        label.text = "Ajouter des notes à votre liste"
+        label.text = "Vous n'avez pas encore de comptes rendus"
         label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         label.textAlignment = .center
         label.textColor = .darkGray

@@ -8,15 +8,16 @@
 
 import UIKit
 
-class StaffHomeViewController: UIViewController {
+final class StaffHomeViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var bordeauxTempLabel: UILabel!
-    @IBOutlet weak var bordeauxImageView: UIImageView!
-    @IBOutlet weak var bordeauxInfoLabel: UILabel!
-    @IBOutlet weak var quoteLabel: UILabel!
-    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet private weak var bordeauxTempLabel: UILabel!
+    @IBOutlet private weak var bordeauxImageView: UIImageView!
+    @IBOutlet private weak var bordeauxInfoLabel: UILabel!
+    @IBOutlet private weak var quoteLabel: UILabel!
+    @IBOutlet private weak var authorLabel: UILabel!
+    @IBOutlet private weak var navSecondView: UIView!
     
     // MARK: - Properties
     
@@ -33,11 +34,12 @@ class StaffHomeViewController: UIViewController {
         configureNavigationBar()
         weatherData()
         quoteData()
+        navSecondView.configureNavSecondView()
     }
     
     // MARK: - Actions
     
-    @IBAction func logOutButtonTapped(_ sender: Any) {
+    @IBAction private func logOutButtonTapped(_ sender: Any) {
         authService.signOut { (isSucceded) in
             if isSucceded {
                 self.navigationController?.popToRootViewController(animated: true)

@@ -8,9 +8,10 @@
 
 import UIKit
 
-class NotesPublishedViewController: UIViewController {
+final class NotesPublishedViewController: UIViewController {
     
-    @IBOutlet weak var notesTableView: UITableView!
+    @IBOutlet private weak var notesTableView: UITableView!
+    @IBOutlet private weak var navSecondView: UIView!
     
     // MARK: - Properties
     
@@ -23,6 +24,7 @@ class NotesPublishedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
+        navSecondView.configureNavSecondView()
         
         notesTableView.register(UINib(nibName: Constants.Cell.notePublishedNibName, bundle: nil), forCellReuseIdentifier: Constants.Cell.notePublishedCellIdentifier)
     }
@@ -97,6 +99,6 @@ extension NotesPublishedViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         // cell's height
-        return 91
+        return 70
     }
 }

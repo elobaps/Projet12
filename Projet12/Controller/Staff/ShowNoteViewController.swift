@@ -8,18 +8,17 @@
 
 import UIKit
 
-class ShowNoteViewController: UIViewController {
+final class ShowNoteViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var timestampLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var noteTextView: UITextView!
+    @IBOutlet private weak var timestampLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var noteTextView: UITextView!
     
     // MARK: - Properties
     
     var noteRepresentable: Note?
-//    var notes = [Note]()
     
     // MARK: - View Life Cycle
     
@@ -31,11 +30,11 @@ class ShowNoteViewController: UIViewController {
     
     // MARK: - Method
     
-    func updateNote() {
+    private func updateNote() {
         guard let noteRepresentable = noteRepresentable else { return }
         titleLabel.text = noteRepresentable.title
         noteTextView.text = noteRepresentable.text
         let date = noteRepresentable.timestamp
-        timestampLabel.text = convertTimestampToString(timestamp: date)
+        timestampLabel.text = convertTimestampToString(timestamp: date!)
     }
 }

@@ -24,7 +24,7 @@
 		2F2A4F54241BC3E700FE4F2F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2A4F53241BC3E700FE4F2F /* SignUpViewController.swift */; };
 		2F553F2B2433E9280075DB29 /* UITableViewCell+ConvertTimastamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F553F2A2433E9280075DB29 /* UITableViewCell+ConvertTimastamp.swift */; };
 		2F553F2D2433E9FD0075DB29 /* UIViewController+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F553F2C2433E9FD0075DB29 /* UIViewController+Date.swift */; };
-		2F553F2F243626B70075DB29 /* NotesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F553F2E243626B70075DB29 /* NotesServiceTests.swift */; };
+		2F553F2F243626B70075DB29 /* NoteServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F553F2E243626B70075DB29 /* NoteServiceTests.swift */; };
 		2F644987243F2402001CA670 /* ShowNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F644986243F2402001CA670 /* ShowNoteViewController.swift */; };
 		2F64498A243F3108001CA670 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F644989243F3108001CA670 /* Report.swift */; };
 		2F64498C243F321C001CA670 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F64498B243F321C001CA670 /* ReportService.swift */; };
@@ -65,13 +65,17 @@
 		2FAB592A242CDE6C004A76BE /* NoteFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAB5929242CDE6C004A76BE /* NoteFirestore.swift */; };
 		2FAB592C242CFAB9004A76BE /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAB592B242CFAB9004A76BE /* Note.swift */; };
 		2FAFB3F024505DB300617373 /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAFB3EF24505DB300617373 /* ProfilViewController.swift */; };
+		2FAFB3F22451D8CE00617373 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAFB3F12451D8CE00617373 /* UIView.swift */; };
+		2FAFB3F5245363D600617373 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAFB3F4245363D600617373 /* UserService.swift */; };
+		2FAFB3F72453647F00617373 /* UserFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAFB3F62453647F00617373 /* UserFirestore.swift */; };
+		2FAFB3F92453680700617373 /* UserServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAFB3F82453680700617373 /* UserServiceTests.swift */; };
 		2FBA1040244F1C3800FB3481 /* PatientsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBA103F244F1C3800FB3481 /* PatientsListViewController.swift */; };
 		2FBA1042244F216100FB3481 /* ShowUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBA1041244F216100FB3481 /* ShowUserViewController.swift */; };
 		2FCD9D5E24225288003E5D1D /* AuthFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD9D5D24225288003E5D1D /* AuthFirestore.swift */; };
 		2FE311D2241A2CB500BF515E /* Quote.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FE311D1241A2CB500BF515E /* Quote.json */; };
 		2FE92D40244CB07C00D278E7 /* ShowReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE92D3F244CB07C00D278E7 /* ShowReportViewController.swift */; };
 		2FE92D42244CE27B00D278E7 /* UIViewController+SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE92D41244CE27B00D278E7 /* UIViewController+SegmentedControl.swift */; };
-		5ED06AAC8D14FA0763C0C79A /* Pods_Projet12.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9884829214AD6302FE96460 /* Pods_Projet12.framework */; };
+		5ED06AAC8D14FA0763C0C79A /* Pods_Projet12.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9884829214AD6302FE96460 /* Pods_Projet12.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,7 +110,7 @@
 		2F2A4F53241BC3E700FE4F2F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		2F553F2A2433E9280075DB29 /* UITableViewCell+ConvertTimastamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+ConvertTimastamp.swift"; sourceTree = "<group>"; };
 		2F553F2C2433E9FD0075DB29 /* UIViewController+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Date.swift"; sourceTree = "<group>"; };
-		2F553F2E243626B70075DB29 /* NotesServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesServiceTests.swift; sourceTree = "<group>"; };
+		2F553F2E243626B70075DB29 /* NoteServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteServiceTests.swift; sourceTree = "<group>"; };
 		2F644986243F2402001CA670 /* ShowNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNoteViewController.swift; sourceTree = "<group>"; };
 		2F644989243F3108001CA670 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		2F64498B243F321C001CA670 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
@@ -147,6 +151,10 @@
 		2FAB5929242CDE6C004A76BE /* NoteFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteFirestore.swift; sourceTree = "<group>"; };
 		2FAB592B242CFAB9004A76BE /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		2FAFB3EF24505DB300617373 /* ProfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilViewController.swift; sourceTree = "<group>"; };
+		2FAFB3F12451D8CE00617373 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		2FAFB3F4245363D600617373 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		2FAFB3F62453647F00617373 /* UserFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFirestore.swift; sourceTree = "<group>"; };
+		2FAFB3F82453680700617373 /* UserServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceTests.swift; sourceTree = "<group>"; };
 		2FBA103F244F1C3800FB3481 /* PatientsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsListViewController.swift; sourceTree = "<group>"; };
 		2FBA1041244F216100FB3481 /* ShowUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowUserViewController.swift; sourceTree = "<group>"; };
 		2FCD9D5D24225288003E5D1D /* AuthFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirestore.swift; sourceTree = "<group>"; };
@@ -292,6 +300,7 @@
 				2F553F2A2433E9280075DB29 /* UITableViewCell+ConvertTimastamp.swift */,
 				2F553F2C2433E9FD0075DB29 /* UIViewController+Date.swift */,
 				2FE92D41244CE27B00D278E7 /* UIViewController+SegmentedControl.swift */,
+				2FAFB3F12451D8CE00617373 /* UIView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -324,8 +333,9 @@
 			isa = PBXGroup;
 			children = (
 				2F6A5E5F2428E7DC0036CADC /* AuthServiceTests.swift */,
-				2F553F2E243626B70075DB29 /* NotesServiceTests.swift */,
+				2F553F2E243626B70075DB29 /* NoteServiceTests.swift */,
 				2F680E632447271F006264E6 /* ReportServiceTests.swift */,
+				2FAFB3F82453680700617373 /* UserServiceTests.swift */,
 			);
 			path = FirebaseTests;
 			sourceTree = "<group>";
@@ -370,12 +380,12 @@
 		2F6D307A2418EBBD0028CA1A /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				2F644988243F30F4001CA670 /* Report */,
-				2F6A5E64242B92050036CADC /* Note */,
 				2F6A5E63242B91B80036CADC /* Authentication */,
+				2F6A5E64242B92050036CADC /* Note */,
+				2F644988243F30F4001CA670 /* Report */,
+				2FAFB3F3245363A600617373 /* User */,
 				2F6A5E62242B91A90036CADC /* Quote */,
 				2F6A5E61242B919A0036CADC /* Weather */,
-				2F680E652447372B006264E6 /* User.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -427,6 +437,16 @@
 				2F143CBE241AC66300744613 /* Staff.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		2FAFB3F3245363A600617373 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				2F680E652447372B006264E6 /* User.swift */,
+				2FAFB3F4245363D600617373 /* UserService.swift */,
+				2FAFB3F62453647F00617373 /* UserFirestore.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		2FE311D3241A40A700BF515E /* Patient */ = {
@@ -673,10 +693,12 @@
 				2F984D3324195D0A001C8463 /* QuoteData.swift in Sources */,
 				2F6A5E6E242B9F7B0036CADC /* NoteTableViewCell.swift in Sources */,
 				2F2A07322421019C0093AFC3 /* UIViewController+Alert.swift in Sources */,
+				2FAFB3F72453647F00617373 /* UserFirestore.swift in Sources */,
 				2FA6D76924226B620065E0C2 /* FamilyHomeViewController.swift in Sources */,
 				2F2A4F54241BC3E700FE4F2F /* SignUpViewController.swift in Sources */,
 				2FAB592C242CFAB9004A76BE /* Note.swift in Sources */,
 				2FA1ECEC241BCF9400537BE1 /* UserDefaults+UserNavigation.swift in Sources */,
+				2FAFB3F5245363D600617373 /* UserService.swift in Sources */,
 				2F6D30792418EBB40028CA1A /* WeatherData.swift in Sources */,
 				2F6D307C2418EBDC0028CA1A /* Encoder.swift in Sources */,
 				2FE92D40244CB07C00D278E7 /* ShowReportViewController.swift in Sources */,
@@ -690,6 +712,7 @@
 				2F64498E243F326B001CA670 /* ReportFirestore.swift in Sources */,
 				2F0522E32418096400C52D33 /* UIViewController+NavBar.swift in Sources */,
 				2FA1ECEA241BC6FB00537BE1 /* AuthService.swift in Sources */,
+				2FAFB3F22451D8CE00617373 /* UIView.swift in Sources */,
 				2F553F2D2433E9FD0075DB29 /* UIViewController+Date.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -699,9 +722,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F984D3A24196268001C8463 /* QuoteServiceTestCase.swift in Sources */,
-				2F553F2F243626B70075DB29 /* NotesServiceTests.swift in Sources */,
+				2F553F2F243626B70075DB29 /* NoteServiceTests.swift in Sources */,
 				2F6A5E602428E7DC0036CADC /* AuthServiceTests.swift in Sources */,
 				2F680E642447271F006264E6 /* ReportServiceTests.swift in Sources */,
+				2FAFB3F92453680700617373 /* UserServiceTests.swift in Sources */,
 				2F0522D92417F55500C52D33 /* WeatherServiceTestCase.swift in Sources */,
 				2F6D308E24192C120028CA1A /* URLSessionFake.swift in Sources */,
 				2F6D308624192AE40028CA1A /* FakeResponseData.swift in Sources */,

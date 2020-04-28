@@ -80,7 +80,7 @@
                                         <rect key="frame" x="0.0" y="24" width="280" height="150"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="150" id="XER-xW-6Tj"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="2rZ-5C-LAu"/>
                                         </constraints>
                                         <string key="text">Pour toutes demandes spécifiques, merci de contacter le personnel médical de la structure.
 La prise de rendez-vous s’effectue uniquement par téléphone.
@@ -163,6 +163,11 @@ Nous somme joignable au :
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="authorLabel" destination="NeQ-Jz-PWr" id="WWB-mG-yJk"/>
+                        <outlet property="navSecondView" destination="EPr-l6-Jvl" id="33K-nH-RPr"/>
+                        <outlet property="quoteLabel" destination="vrG-Dr-poP" id="AeF-44-fMp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jS1-tQ-6LM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -217,6 +222,7 @@ Nous somme joignable au :
                     </view>
                     <navigationItem key="navigationItem" title="Historique" id="o0N-Oj-RBE"/>
                     <connections>
+                        <outlet property="navSecondView" destination="mgr-cw-Eok" id="mEX-kd-pTF"/>
                         <outlet property="reportsTableView" destination="fuh-lN-iMK" id="FTf-E1-P9R"/>
                         <segue destination="dZJ-3e-49e" kind="show" identifier="SegueToShowReport" id="SKg-zn-Du4"/>
                     </connections>

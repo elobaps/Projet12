@@ -17,9 +17,10 @@ protocol AuthType {
                       email: String, password: String, patientUid: String, callback: @escaping (Bool) -> Void)
     func signOut(callback: @escaping (Bool) -> Void)
     func isUserConnected(callback: @escaping (Bool) -> Void)
+    func resetPassword(email: String, completion: @escaping (Bool) -> Void)
 }
 
-class AuthService {
+final class AuthService {
     private let auth: AuthType
     var currentUID: String? { return auth.currentUID }
     
@@ -47,5 +48,9 @@ class AuthService {
     
     func isUserConnected(callback: @escaping (Bool) -> Void) {
         auth.isUserConnected(callback: callback)
+    }
+    
+    func resetPassword(email: String, completion: @escaping (Bool) -> Void) {
+        auth.resetPassword(email: email, completion: completion)
     }
 }

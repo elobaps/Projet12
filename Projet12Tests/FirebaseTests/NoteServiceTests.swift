@@ -9,7 +9,7 @@
 @testable import Projet12
 import XCTest
 
-class NotesServiceTests: XCTestCase {
+class NoteServiceTests: XCTestCase {
     
     // MARK: - Helpers
     
@@ -29,11 +29,11 @@ class NotesServiceTests: XCTestCase {
         }
         
         func getNotes(callback: @escaping (Result<[Note], Error>) -> Void) {
-            note.append(Note(fromUid: "", identifier: "", title: "", text: "", published: true, timestamp: 0, firstName: "", lastName: ""))
+            note.append(Note(dictionnary: ["": ""]))
         }
         
         func getNotesPublished(callback: @escaping (Result<[Note], Error>) -> Void) {
-            note.append(Note(fromUid: "", identifier: "", title: "", text: "", published: true, timestamp: 0, firstName: "", lastName: ""))
+            note.append(Note(dictionnary: ["": ""]))
         }
         
         func deletedNote(identifier: String, callback: @escaping (Bool) -> Void) {
@@ -46,10 +46,11 @@ class NotesServiceTests: XCTestCase {
     }
     
     // MARK: - Methods
-
+    
     func createNote() -> Note {
-        return Note(fromUid: "", identifier: "", title: "", text: "", published: true, timestamp: 0, firstName: "", lastName: "")
-    }
+        let dictionnary = [Constants.FStore.identifier: "", Constants.FStore.userUID: "", Constants.FStore.publishedNote: "", Constants.FStore.titleNote: "", Constants.FStore.textNote: "", Constants.FStore.timestamp: nil]
+           return Note(dictionnary: dictionnary as [String: Any])
+       }
     
     // MARK: - Tests
     

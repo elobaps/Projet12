@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  Projet12
 //
 //  Created by Elodie-Anne Parquer on 10/03/2020.
@@ -12,14 +12,14 @@ class HomeViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak private var bordeauxTempLabel: UILabel!
-    @IBOutlet weak private var bordeauxImageView: UIImageView!
-    @IBOutlet weak private var bordeauxInfoLabel: UILabel!
-    @IBOutlet weak var quoteLabel: UILabel!
-    @IBOutlet weak var authorLabel: UILabel!
-    @IBOutlet weak var uidPatientLabel: UILabel!
+    @IBOutlet private weak var bordeauxTempLabel: UILabel!
+    @IBOutlet private weak var bordeauxImageView: UIImageView!
+    @IBOutlet private weak var bordeauxInfoLabel: UILabel!
+    @IBOutlet private weak var quoteLabel: UILabel!
+    @IBOutlet private weak var authorLabel: UILabel!
+    @IBOutlet private weak var uidPatientLabel: UILabel!
+    @IBOutlet private weak var navSecondView: UIView!
     
-    @IBOutlet weak var navSecondView: UIView!
     // MARK: - Properties
     
     private var city: WeatherData?
@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
     private var quote: QuoteData?
     private let quoteService = QuoteService()
     private let authService: AuthService = AuthService()
-    private let reportService: ReportService = ReportService()
+    private let userService: UserService = UserService()
     
     // MARK: - View Life Cycle
     
@@ -37,18 +37,12 @@ class HomeViewController: UIViewController {
         loadedUserData()
         weatherData()
         quoteData()
-        
-        DispatchQueue.main.async {
-        self.navSecondView.layer.cornerRadius = 12
-        self.navSecondView.clipsToBounds = true
-        self.navSecondView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
-        }
-
+        navSecondView.configureNavSecondView()
     }
     
     // MARK: - Actions
     
-    @IBAction func logOutButtonTapped(_ sender: Any) {
+    @IBAction private func logOutButtonTapped(_ sender: Any) {
         authService.signOut { (isSucceded) in
             if isSucceded {
                 self.navigationController?.popToRootViewController(animated: true)
@@ -62,7 +56,7 @@ class HomeViewController: UIViewController {
     
     private func loadedUserData() {
         guard let uid = authService.currentUID else { return }
-        reportService.getUserData(with: uid) { (result) in
+        userService.getUserData(with: uid) { (result) in
             switch result {
             case .success(let userData):
                 DispatchQueue.main.async {

@@ -9,28 +9,28 @@
 import Foundation
 import Firebase
 
-class NoteFirestore: NoteType {
+final class NoteFirestore: NoteType {
     
     // MARK: - Properties
     
     var currentUID: String? {
         return Firebase.Auth.auth().currentUser?.uid
     }
-    var notes = [Note]()
     
     private let db = Firestore.firestore()
     
     // MARK: - Methods
     
+    /// Method to save a note on the patient side
     func savedNote(identifier: String?, userFirstName: String, userLastName: String, title: String, text: String, timestamp: TimeInterval, published: Bool, callback: @escaping (Bool) -> Void) {
         guard let uid = currentUID else { return }
         let timestamp = Date().timeIntervalSince1970
         let uniqueIdentifier = UUID().uuidString
         let newNoteRef = db.collection(Constants.FStore.noteCollectionName)
-        let refNote = identifier != nil ? newNoteRef.document(identifier!) : newNoteRef.document(uniqueIdentifier)
-        refNote.setData([Constants.FStore.userUID: uid, Constants.FStore.identifier: identifier != nil ? identifier! : uniqueIdentifier, Constants.FStore.textNote: text, Constants.FStore.titleNote: title, Constants.FStore.timestamp: timestamp, Constants.FStore.publishedNote: published, Constants.FStore.noteFirstName: userFirstName, Constants.FStore.noteLastName: userLastName], merge: true) { (error) in
+        let refNote = identifier != nil ? newNoteRef.document(identifier ?? "") : newNoteRef.document(uniqueIdentifier)
+        refNote.setData([Constants.FStore.userUID: uid, Constants.FStore.identifier: identifier != nil ? identifier ?? "" : uniqueIdentifier, Constants.FStore.textNote: text, Constants.FStore.titleNote: title, Constants.FStore.timestamp: timestamp, Constants.FStore.publishedNote: published, Constants.FStore.noteFirstName: userFirstName, Constants.FStore.noteLastName: userLastName], merge: true) { (error) in
             if let err = error {
-                print("there was an issue saving data to firestore, \(err)")
+                print("Error adding document: \(err)")
                 callback(false)
             } else {
                 callback(true)
@@ -38,82 +38,66 @@ class NoteFirestore: NoteType {
         }
     }
     
+    /// Method to get notes
     func getNotes(callback: @escaping (Result<[Note], Error>) -> Void) {
-        guard let uid = Firebase.Auth.auth().currentUser?.uid else { return }
-        db.collection(Constants.FStore.noteCollectionName).whereField(Constants.FStore.userUID, isEqualTo: uid).order(by: Constants.FStore.timestamp, descending: true).addSnapshotListener({ (querySnapshot, error) in
-            self.notes = []
-            if let err = error {
-                print(err)
+        guard let uid = currentUID else { return }
+        db.collection(Constants.FStore.noteCollectionName).whereField(Constants.FStore.userUID, isEqualTo: uid).order(by: Constants.FStore.timestamp, descending: true).addSnapshotListener({ (querySnapshot, _) in
+            var notes = [Note]()
+            guard let documents = querySnapshot?.documents else {
                 callback(.failure(NetworkError.networkError))
-            } else {
-                if let snapshotDocuments = querySnapshot?.documents {
-                    for doc in snapshotDocuments {
-                        let data = doc.data()
-                        if let uid = data[Constants.FStore.userUID] as? String, let identifier = data[Constants.FStore.identifier] as? String, let title = data[Constants.FStore.titleNote] as? String, let text = data[Constants.FStore.textNote] as? String, let published = data[Constants.FStore.publishedNote] as? Bool, let timestamp = data[Constants.FStore.timestamp] as? Double, let userFirstName = data[Constants.FStore.noteFirstName] as? String, let userLastName = data[Constants.FStore.noteLastName] as? String {
-                            let newNote = Note(fromUid: uid, identifier: identifier, title: title, text: text, published: published, timestamp: timestamp, firstName: userFirstName, lastName: userLastName)
-                            self.notes.append(newNote)
-                        }
-                    }
-                    callback(.success(self.notes))
-                }
-                
+                return
             }
+            for doc in documents {
+                let data = doc.data()
+                let note = Note(dictionnary: data)
+                notes.append(note)
+            }
+            callback(.success(notes))
         })
     }
     
+    /// Method to get published notes in staff side
     func getNotesPublished(callback: @escaping (Result<[Note], Error>) -> Void) {
-        db.collection(Constants.FStore.noteCollectionName).whereField(Constants.FStore.publishedNote, isEqualTo: true).order(by: Constants.FStore.timestamp, descending: true).addSnapshotListener({ (querySnapshot, error) in
-            self.notes = []
-            if let err = error {
-                print(err)
+        db.collection(Constants.FStore.noteCollectionName).whereField(Constants.FStore.publishedNote, isEqualTo: true).order(by: Constants.FStore.timestamp, descending: true).addSnapshotListener({ (querySnapshot, _) in
+            var notes = [Note]()
+            guard let documents = querySnapshot?.documents else {
                 callback(.failure(NetworkError.networkError))
-            } else {
-                if let snapshotDocuments = querySnapshot?.documents {
-                    for doc in snapshotDocuments {
-                        let data = doc.data()
-                        if let uid = data[Constants.FStore.userUID] as? String, let identifier = data[Constants.FStore.identifier] as? String, let title = data[Constants.FStore.titleNote] as? String, let text = data[Constants.FStore.textNote] as? String, let published = data[Constants.FStore.publishedNote] as? Bool, let timestamp = data[Constants.FStore.timestamp] as? Double, let userFirstName = data[Constants.FStore.noteFirstName] as? String, let userLastName = data[Constants.FStore.noteLastName] as? String {
-                            let newNote = Note(fromUid: uid, identifier: identifier, title: title, text: text, published: published, timestamp: timestamp, firstName: userFirstName, lastName: userLastName)
-                            self.notes.append(newNote)
-                        }
-                    }
-                    callback(.success(self.notes))
-                }
-                
+                return
             }
+            for doc in documents {
+                let data = doc.data()
+                let note = Note(dictionnary: data)
+                notes.append(note)
+            }
+            callback(.success(notes))
         })
     }
     
+    /// Method to delete a note
     func deletedNote(identifier: String, callback: @escaping (Bool) -> Void) {
-        db.collection(Constants.FStore.noteCollectionName).whereField(Constants.FStore.identifier, isEqualTo: identifier).getDocuments { (querySnapshot, error) in
-            if let err = error {
-                print ("Error removing document : \(err)")
+        db.collection(Constants.FStore.noteCollectionName).whereField(Constants.FStore.identifier, isEqualTo: identifier).getDocuments { (querySnapshot, _) in
+            guard let documents = querySnapshot?.documents else {
                 callback(false)
-            } else {
-                if let snapshotDocuments = querySnapshot?.documents {
-                    for doc in snapshotDocuments {
-                        doc.reference.delete()
-                        print ("Document successfuly deleted")
-                    }
-                    callback(true)
-                }
+                return
             }
+            for doc in documents {
+                doc.reference.delete()
+            }
+            callback(true)
         }
     }
     
+     /// Method to delete all notes
     func deleteAllNotes(callback: @escaping (Bool) -> Void) {
-        db.collection(Constants.FStore.noteCollectionName).getDocuments { (querySnapshot, error) in
-            if let err = error {
-                print ("Error removing all documents : \(err)")
+        db.collection(Constants.FStore.noteCollectionName).getDocuments { (querySnapshot, _) in
+            guard let documents = querySnapshot?.documents else {
                 callback(false)
-            } else {
-                if let snapshotDocuments = querySnapshot?.documents {
-                    for doc in snapshotDocuments {
-                        doc.reference.delete()
-                        print ("All documents successfuly deleted")
-                    }
-                    callback(true)
-                }
+                return
             }
+            for doc in documents {
+                doc.reference.delete()
+            }
+            callback(true)
         }
     }
 }

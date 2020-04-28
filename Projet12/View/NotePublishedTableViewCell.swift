@@ -8,12 +8,12 @@
 
 import UIKit
 
-class NotePublishedTableViewCell: UITableViewCell {
+final class NotePublishedTableViewCell: UITableViewCell {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
     
     var note: Note? {
         didSet {

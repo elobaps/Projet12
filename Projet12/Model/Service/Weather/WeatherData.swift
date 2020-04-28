@@ -18,11 +18,13 @@ struct WeatherData: Decodable {
 }
 
 // MARK: - Main
+
 struct Main: Decodable {
     let temp: Double
 }
 
 // MARK: - Weather
+
 struct Weather: Decodable {
     let weatherDescription, icon: String?
 

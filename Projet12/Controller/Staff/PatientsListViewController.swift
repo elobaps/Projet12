@@ -8,54 +8,56 @@
 
 import UIKit
 
-class PatientListViewController: UIViewController {
+final class PatientListViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var patientsTableView: UITableView! { didSet { patientsTableView.tableFooterView = UIView() }}
+    @IBOutlet private weak var patientsTableView: UITableView! { didSet { patientsTableView.tableFooterView = UIView() }}
+    @IBOutlet private weak var navSecondView: UIView!
     
     // MARK: - Properties
     
     var users = [User]()
     var userRepresentable: User?
-    private let reportService: ReportService = ReportService()
+    private let userService: UserService = UserService()
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
-         super.viewDidLoad()
-         configureNavigationBar()
-         
-          patientsTableView.register(UINib(nibName: Constants.Cell.notePublishedNibName, bundle: nil), forCellReuseIdentifier: Constants.Cell.notePublishedCellIdentifier)
-     }
-     
-     override func viewWillAppear(_ animated: Bool) {
-         super.viewWillAppear(animated)
+        super.viewDidLoad()
+        configureNavigationBar()
+        navSecondView.configureNavSecondView()
+        
+        patientsTableView.register(UINib(nibName: Constants.Cell.notePublishedNibName, bundle: nil), forCellReuseIdentifier: Constants.Cell.notePublishedCellIdentifier)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadedUsers()
         patientsTableView.reloadData()
-     }
+    }
     
     // MARK: - Methods
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-          guard let updateUserVC = segue.destination as? ShowUserViewController else { return }
-              updateUserVC.userRepresentable = userRepresentable
-      }
+        guard let updateUserVC = segue.destination as? ShowUserViewController else { return }
+        updateUserVC.userRepresentable = userRepresentable
+    }
     
     private func loadedUsers() {
-          reportService.getUsersWithPatientFilter { (result) in
-              switch result {
-              case .success(let users):
-                  DispatchQueue.main.async {
-                      self.users = users
-                      self.patientsTableView.reloadData()
-                  }
-              case .failure(let error):
-                  self.presentAlert(titre: "Erreur", message: "Le chargement des utilisateurs a échoué")
-                  print(error)
-              }
-          }
-      }
+        userService.getUsersWithPatientFilter { (result) in
+            switch result {
+            case .success(let users):
+                DispatchQueue.main.async {
+                    self.users = users
+                    self.patientsTableView.reloadData()
+                }
+            case .failure(let error):
+                self.presentAlert(titre: "Erreur", message: "Le chargement des utilisateurs a échoué")
+                print(error)
+            }
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource

@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ShowUserViewController: UIViewController {
+final class ShowUserViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var uidLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var emailLabel: UILabel!
+    @IBOutlet private weak var uidLabel: UILabel!
     
     // MARK: - Properties
     
@@ -28,12 +28,11 @@ class ShowUserViewController: UIViewController {
         super.viewDidLoad()
         configureNavigationBar()
         updateUser()
-        
     }
     
     // MARK: - Method
     
-    func updateUser() {
+    private func updateUser() {
         guard let userRepresentable = userRepresentable else { return }
         emailLabel.text = userRepresentable.email
         uidLabel.text = userRepresentable.uid

@@ -8,11 +8,12 @@
 
 import UIKit
 
-class NotesViewController: UIViewController {
+final class NotesViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var noteTableView: UITableView! { didSet { noteTableView.tableFooterView = UIView() }}
+    @IBOutlet private weak var noteTableView: UITableView! { didSet { noteTableView.tableFooterView = UIView() }}
+    @IBOutlet private weak var navSecondView: UIView!
     
     // MARK: - Properties
     
@@ -26,6 +27,7 @@ class NotesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
+        navSecondView.configureNavSecondView()
         
         noteTableView.register(UINib(nibName: Constants.Cell.noteNibName, bundle: nil), forCellReuseIdentifier: Constants.Cell.noteCellIdentifier)
     }
@@ -39,7 +41,7 @@ class NotesViewController: UIViewController {
     
     @IBAction private func unwindToNoteViewController(_ segue: UIStoryboardSegue) {}
     
-    @IBAction func addNoteButtonTapped(_ sender: UIButton) {
+    @IBAction private func addNoteButtonTapped(_ sender: UIButton) {
         selectedSegue = 1
         performSegue(withIdentifier: Constants.Segue.updateNoteSegue, sender: nil)
     }
@@ -117,7 +119,7 @@ extension NotesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
-            deletedNote(identifier: notes[indexPath.row].identifier)
+            deletedNote(identifier: notes[indexPath.row].identifier ?? "")
             notes.remove(at: indexPath.row)
             noteTableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
             noteTableView.reloadData()

@@ -7,18 +7,22 @@
 //
 
 import UIKit
-import Firebase
 
-class FamilyHomeViewController: UIViewController {
+final class FamilyHomeViewController: UIViewController {
     
     // MARK: - Outlet
     
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var navSecondView: UIView!
+    @IBOutlet private weak var quoteLabel: UILabel!
+    @IBOutlet private weak var authorLabel: UILabel!
     
     // MARK: - Properties
     
     private let authService = AuthService()
-    private let reportService: ReportService = ReportService()
+    private let userService: UserService = UserService()
+    private var quote: QuoteData?
+    private let quoteService = QuoteService()
     
     // MARK: - View Life Cycle
     
@@ -26,11 +30,13 @@ class FamilyHomeViewController: UIViewController {
         super.viewDidLoad()
         configureNavigationBar()
         loadedUserData()
+        quoteData()
+        navSecondView.configureNavSecondView()
     }
     
     // MARK: - Action
     
-    @IBAction func logOutButtonTapped(_ sender: Any) {
+    @IBAction private func logOutButtonTapped(_ sender: Any) {
         authService.signOut { (isSucceded) in
             if isSucceded {
                 self.navigationController?.popToRootViewController(animated: true)
@@ -42,19 +48,38 @@ class FamilyHomeViewController: UIViewController {
     
     // MARK: - Method
     
-    func loadedUserData() {
+    private func loadedUserData() {
         guard let uid = authService.currentUID else { return }
-        reportService.getUserData(with: uid) { (result) in
+        userService.getUserData(with: uid) { (result) in
             switch result {
             case .success(let userData):
                 DispatchQueue.main.async {
-                    guard let userFirstName: String = userData[0].firstName as String? else { return }
-                    self.navigationItem.title = "Bonjour \(userFirstName)"
+                    self.navigationItem.title = "Bonjour \(userData[0].firstName)"
                 }
             case .failure(let error):
                 self.presentAlert(titre: "Erreur", message: "Le chargement des informations a échoué")
                 print(error)
             }
         }
+    }
+    
+    /// method that manages the data of the network call
+    private func quoteData() {
+        quoteService.getQuote { result in
+            switch result {
+            case .success(let quoteData):
+                DispatchQueue.main.sync {
+                    self.updateQuote(data: quoteData)
+                }
+            case .failure(let error):
+                self.presentAlert(titre: "Error", message: "Service non disponible")
+                print(error)
+            }
+        }
+    }
+
+    private func updateQuote(data: QuoteData) {
+        quoteLabel.text = data.quoteText
+        authorLabel.text = data.quoteAuthor
     }
 }

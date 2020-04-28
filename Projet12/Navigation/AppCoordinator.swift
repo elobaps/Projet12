@@ -21,7 +21,6 @@ final class AppCoordinator {
     
     private unowned var appDelegate: AppDelegate
     private let scenes = Scenes()
-    //var userNavigation: UserNavigation = .none
     var userNavigation: UserNavigation = UserDefaults.standard.userNavigation
     private let authService: AuthService = AuthService()
     
@@ -57,9 +56,6 @@ final class AppCoordinator {
               case .none:
                   showAuthentication()
               }
-            
-            //        case .patient:
-        //            window.rootViewController = scenes.createPatientTabBarController()
     }
     
     private func showAuthentication() {

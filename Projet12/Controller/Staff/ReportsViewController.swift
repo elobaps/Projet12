@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ReportsViewController: UIViewController {
+final class ReportsViewController: UIViewController {
     
     // MARK: - Outlet
     
-    @IBOutlet weak var reportsTableView: UITableView! { didSet { reportsTableView.tableFooterView = UIView() }}
+    @IBOutlet private weak var reportsTableView: UITableView! { didSet { reportsTableView.tableFooterView = UIView() }}
+    @IBOutlet private weak var navSecondView: UIView!
     
     // MARK: - Properties
     
@@ -26,6 +27,7 @@ class ReportsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
+        navSecondView.configureNavSecondView()
         
         reportsTableView.register(UINib(nibName: Constants.Cell.noteNibName, bundle: nil), forCellReuseIdentifier: Constants.Cell.noteCellIdentifier)
     }
@@ -39,12 +41,12 @@ class ReportsViewController: UIViewController {
     
     @IBAction private func unwindToReportViewController(_ segue: UIStoryboardSegue) {}
     
-    @IBAction func addReportButtonTapped(_ sender: Any) {
+    @IBAction private func addReportButtonTapped(_ sender: Any) {
         selectedSegue = 1
         performSegue(withIdentifier: Constants.Segue.updateReportSegue, sender: nil)
     }
     
-    @IBAction func clerButtonTapped(_ sender: Any) {
+    @IBAction private func clerButtonTapped(_ sender: Any) {
         reportService.deleteAllReport { (isSuccess) in
             if isSuccess {
                 self.loadedReports()
@@ -118,7 +120,7 @@ extension ReportsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
-            deletedReport(identifier: reports[indexPath.row].identifier)
+            deletedReport(identifier: reports[indexPath.row].identifier ?? "")
             reports.remove(at: indexPath.row)
             reportsTableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
             reportsTableView.reloadData()

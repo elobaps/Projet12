@@ -15,16 +15,9 @@ protocol ReportType {
     func getReportsPublished(callback: @escaping (Result<[Report], Error>) -> Void)
     func deletedReport(identifier: String, callback: @escaping (Bool) -> Void)
     func deleteAllReports(callback: @escaping (Bool) -> Void)
-    func getUsers(callback: @escaping (Result<[User], Error>) -> Void)
-    func deleteAccount(callback: @escaping (Bool) -> Void)
-    func deletedUser(callback: @escaping (Bool) -> Void)
-    func updateUserInformations(userFirstName: String, userLastName: String, email: String, password: String, callback: @escaping (Bool) -> Void)
-    func getUserData(with uid: String, callback: @escaping (Result<[User], Error>) -> Void)
-    func getUsersWithFamilyFilter(callback: @escaping (Result<[User], Error>) -> Void)
-    func getUsersWithPatientFilter(callback: @escaping (Result<[User], Error>) -> Void)
 }
 
-class ReportService {
+final class ReportService {
     
     private let report: ReportType
     private let user: ReportType
@@ -54,33 +47,5 @@ class ReportService {
     func deleteAllReport(callback: @escaping (Bool) -> Void) {
         report.deleteAllReports(callback: callback)
       }
-    
-    func getUserData(with uid: String, callback: @escaping (Result<[User], Error>) -> Void) {
-        user.getUserData(with: uid, callback: callback)
-    }
-    
-    func getUsers(callback: @escaping (Result<[User], Error>) -> Void) {
-        user.getUsers(callback: callback)
-    }
-    
-    func updateUserInformations(userFirstName: String, userLastName: String, email: String, password: String, callback: @escaping (Bool) -> Void) {
-        user.updateUserInformations(userFirstName: userFirstName, userLastName: userLastName, email: email, password: password, callback: callback)
-    }
-    
-    func deletedUser(callback: @escaping (Bool) -> Void) {
-        user.deletedUser(callback: callback)
-    }
-    
-    func deleteAccount(callback: @escaping (Bool) -> Void) {
-        user.deleteAccount(callback: callback)
-    }
-    
-    func getUsersWithFamilyFilter(callback: @escaping (Result<[User], Error>) -> Void) {
-        user.getUsersWithFamilyFilter(callback: callback)
-    }
-    
-    func getUsersWithPatientFilter(callback: @escaping (Result<[User], Error>) -> Void) {
-        user.getUsersWithPatientFilter(callback: callback)
-    }
     
 }

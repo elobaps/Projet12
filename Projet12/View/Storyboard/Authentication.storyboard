@@ -50,7 +50,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Bye-Qg-oP3">
-                                <rect key="frame" x="20" y="220.5" width="280" height="127"/>
+                                <rect key="frame" x="20" y="203" width="280" height="162"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Se connecter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lnb-aq-cVt">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="29"/>
@@ -68,6 +68,17 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3z-bu-k6h">
+                                        <rect key="frame" x="0.0" y="142" width="280" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="0aF-18-JkA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="Mot de passe oublié"/>
+                                        <connections>
+                                            <action selector="resetPasswordButtonTapped:" destination="rJH-w3-3t4" eventType="touchUpInside" id="Gvd-TK-E3r"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JqJ-Yr-pxK">

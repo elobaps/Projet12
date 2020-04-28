@@ -17,7 +17,7 @@ protocol NoteType {
     func deleteAllNotes(callback: @escaping (Bool) -> Void)
 }
 
-class NoteService {
+final class NoteService {
     
     private let note: NoteType
     var currentUID: String? { return note.currentUID }

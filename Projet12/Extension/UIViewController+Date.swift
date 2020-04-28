@@ -9,6 +9,8 @@
 import UIKit
 
 extension UIViewController {
+    
+    /// Convert a timestamp into data then into String type 
    func convertTimestampToString(timestamp: TimeInterval) -> String {
         let date = Date(timeIntervalSince1970: timestamp)
         
