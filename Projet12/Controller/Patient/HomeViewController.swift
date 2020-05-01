@@ -64,8 +64,10 @@ class HomeViewController: UIViewController {
                     self.uidPatientLabel.text = "N° \(uid)"
                 }
             case .failure(let error):
-                self.presentAlert(titre: "Erreur", message: "Le chargement des informations a échoué")
-                print(error)
+                DispatchQueue.main.async {
+                    self.presentAlert(titre: "Erreur", message: "Le chargement des informations a échoué")
+                    print(error)
+                }
             }
         }
     }
@@ -79,8 +81,10 @@ class HomeViewController: UIViewController {
                     self.updateWeather(data: weatherData)
                 }
             case .failure(let error):
-                self.presentAlert(titre: "Error", message: "Service non disponible")
-                print(error)
+                DispatchQueue.main.sync {
+                    self.presentAlert(titre: "Error", message: "Service non disponible")
+                    print(error)
+                }
             }
         }
     }
@@ -94,8 +98,10 @@ class HomeViewController: UIViewController {
                     self.updateQuote(data: quoteData)
                 }
             case .failure(let error):
-                self.presentAlert(titre: "Error", message: "Service non disponible")
-                print(error)
+                DispatchQueue.main.sync {
+                    self.presentAlert(titre: "Error", message: "Service non disponible")
+                    print(error)
+                }
             }
         }
     }

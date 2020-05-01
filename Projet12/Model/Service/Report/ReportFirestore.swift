@@ -17,12 +17,13 @@ final class ReportFirestore: ReportType {
         return Firebase.Auth.auth().currentUser?.uid
     }
     
-    private let db = Firestore.firestore()
-    
+    private var db = Firestore.firestore()
+        
     // MARK: - Methods
     
     /// Method to save a report on the staff side
     func savedReport(identifier: String?, forUid: String, title: String, text: String, timestamp: TimeInterval, published: Bool, completion: @escaping (Bool) -> Void) {
+        
         guard let uid = currentUID else { return }
         let timestamp = Date().timeIntervalSince1970
         let uniqueIdentifier = UUID().uuidString

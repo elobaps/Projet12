@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Network
 
 final class ReportsViewController: UIViewController {
     
@@ -21,6 +22,8 @@ final class ReportsViewController: UIViewController {
     var reportRepresentable: Report?
     private let reportService: ReportService = ReportService()
     var selectedSegue: Int = Int()
+    var isConnectionOK: Bool = true
+    private let monitor = NWPathMonitor()
     
     // MARK: - View Life Cycle
     
@@ -30,6 +33,11 @@ final class ReportsViewController: UIViewController {
         navSecondView.configureNavSecondView()
         
         reportsTableView.register(UINib(nibName: Constants.Cell.noteNibName, bundle: nil), forCellReuseIdentifier: Constants.Cell.noteCellIdentifier)
+        
+        monitor.start(queue: DispatchQueue.global(qos: .background))
+        monitor.pathUpdateHandler = { path in
+            self.isConnectionOK = path.status == .satisfied
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,13 +45,21 @@ final class ReportsViewController: UIViewController {
         loadedReports()
     }
     
+    deinit {
+        monitor.cancel()
+    }
+    
     // MARK: - Actions
     
     @IBAction private func unwindToReportViewController(_ segue: UIStoryboardSegue) {}
     
     @IBAction private func addReportButtonTapped(_ sender: Any) {
-        selectedSegue = 1
-        performSegue(withIdentifier: Constants.Segue.updateReportSegue, sender: nil)
+        if isConnectionOK {
+            selectedSegue = 1
+            performSegue(withIdentifier: Constants.Segue.updateReportSegue, sender: nil)
+        } else {
+            presentAlert(titre: "Erreur", message: "Veuillez vérifier votre connexion internet")
+        }
     }
     
     @IBAction private func clerButtonTapped(_ sender: Any) {
@@ -81,12 +97,12 @@ final class ReportsViewController: UIViewController {
     }
     
     private func deletedReport(identifier: String) {
-         reportService.deletedReport(identifier: identifier) { (isSuccess) in
-             if !isSuccess {
-                 self.presentAlert(titre: "Erreur", message: "La suppression a échoué")
-             }
-         }
-     }
+        reportService.deletedReport(identifier: identifier) { (isSuccess) in
+            if !isSuccess {
+                self.presentAlert(titre: "Erreur", message: "La suppression a échoué")
+            }
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource

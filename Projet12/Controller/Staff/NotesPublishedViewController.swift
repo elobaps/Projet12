@@ -10,7 +10,7 @@ import UIKit
 
 final class NotesPublishedViewController: UIViewController {
     
-    @IBOutlet private weak var notesTableView: UITableView!
+    @IBOutlet private weak var notesTableView: UITableView! { didSet { notesTableView.tableFooterView = UIView() }}
     @IBOutlet private weak var navSecondView: UIView!
     
     // MARK: - Properties

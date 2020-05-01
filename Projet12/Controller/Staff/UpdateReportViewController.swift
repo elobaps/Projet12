@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Network
 
 final class UpdateReportViewController: UIViewController {
     
@@ -30,6 +31,8 @@ final class UpdateReportViewController: UIViewController {
         }
         return String()
     }()
+    var isConnectionOK: Bool = true
+    private let monitor = NWPathMonitor()
     
     // MARK: - View Life Cycle
     
@@ -37,31 +40,49 @@ final class UpdateReportViewController: UIViewController {
         super.viewDidLoad()
         configureNavigationBar()
         updateReport()
+        
+        reportTextView.delegate = self
+        reportTextView.text = "Veuillez renseigner une description"
+        reportTextView.textColor = UIColor.lightGray
+        
+        monitor.start(queue: DispatchQueue.global(qos: .background))
+        monitor.pathUpdateHandler = { path in
+            self.isConnectionOK = path.status == .satisfied
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadedUsers()
+        let timestamp = Date().timeIntervalSince1970
+        timestampLabel.text = convertTimestampToString(timestamp: timestamp)
+    }
+    
+    deinit {
+        monitor.cancel()
     }
     
     // MARK: - Actions
     
     @IBAction private func saveButtonTapped(_ sender: Any) {
-        guard timestampLabel.text != nil else { return }
-        guard let title = titleTextField.text else { return }
-        guard let reportText = reportTextView.text else { return }
-        //        guard userId != String() else { return }
-        let publishedReport = publishedSwitch.isOn
-        guard userId != String() else {
-            presentAlert(titre: "Attention", message: "Veuillez renseigner un utilisateur à qui attribué le compte rendu")
-            return
-        }
-        self.reportService.savedReport(identifier: self.reportRepresentable?.identifier, forUid: self.userId, title: title, text: reportText, timestamp: 0, published: publishedReport) { (isSuccess) in
-            if isSuccess {
-                self.performSegue(withIdentifier: "unwindToReportViewController", sender: nil)
-            } else {
-                self.presentAlert(titre: "Erreur", message: "L'enregistrement a échoué")
+        if isConnectionOK {
+            guard timestampLabel.text != nil else { return }
+            guard let title = titleTextField.text else { return }
+            guard let reportText = reportTextView.text else { return }
+            let publishedReport = publishedSwitch.isOn
+            guard userId != String() else {
+                presentAlert(titre: "Attention", message: "Veuillez renseigner un utilisateur à qui attribué le compte rendu")
+                return
             }
+            self.reportService.savedReport(identifier: self.reportRepresentable?.identifier, forUid: self.userId, title: title, text: reportText, timestamp: 0, published: publishedReport) { (isSuccess) in
+                if isSuccess {
+                    self.performSegue(withIdentifier: "unwindToReportViewController", sender: nil)
+                } else {
+                    self.presentAlert(titre: "Erreur", message: "L'enregistrement a échoué")
+                }
+            }
+        } else {
+            self.presentAlert(titre: "Erreur", message: "Veuillez vérifier votre connexion internet")
         }
     }
     
@@ -117,5 +138,21 @@ extension UpdateReportViewController: UIPickerViewDataSource, UIPickerViewDelega
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         userId = users[row].uid
         selectedRow = row
+    }
+}
+
+extension UpdateReportViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if reportTextView.textColor == UIColor.lightGray {
+            reportTextView.text = nil
+            reportTextView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if reportTextView.text.isEmpty {
+            reportTextView.text = "Veuillez renseigner une description"
+            reportTextView.textColor = UIColor.lightGray
+        }
     }
 }

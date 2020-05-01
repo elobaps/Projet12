@@ -41,21 +41,23 @@ final class AppCoordinator {
         window.rootViewController = UIViewController()
         window.backgroundColor = .white
         authService.isUserConnected { (isConnected) in
-            if !isConnected {
-                self.showAuthentication()
+            DispatchQueue.main.async {
+                if !isConnected {
+                    self.showAuthentication()
+                }
             }
         }
-     if authService.currentUID == nil { UserDefaults.standard.set(userNavigation: .none, forKey: UserDefaultsKeys.userNavigation.rawValue) }
-              switch userNavigation {
-              case .patient:
-                  window.rootViewController = scenes.createPatientTabBarController()
-              case .staff:
-                  window.rootViewController = scenes.createStaffTabBarController()
-              case .family:
-                  window.rootViewController = scenes.createFamilyTabBarController()
-              case .none:
-                  showAuthentication()
-              }
+        if authService.currentUID == nil { UserDefaults.standard.set(userNavigation: .none, forKey: UserDefaultsKeys.userNavigation.rawValue) }
+        switch userNavigation {
+        case .patient:
+            window.rootViewController = scenes.createPatientTabBarController()
+        case .staff:
+            window.rootViewController = scenes.createStaffTabBarController()
+        case .family:
+            window.rootViewController = scenes.createFamilyTabBarController()
+        case .none:
+            showAuthentication()
+        }
     }
     
     private func showAuthentication() {

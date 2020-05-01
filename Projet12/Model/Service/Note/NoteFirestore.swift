@@ -23,6 +23,7 @@ final class NoteFirestore: NoteType {
     
     /// Method to save a note on the patient side
     func savedNote(identifier: String?, userFirstName: String, userLastName: String, title: String, text: String, timestamp: TimeInterval, published: Bool, callback: @escaping (Bool) -> Void) {
+        
         guard let uid = currentUID else { return }
         let timestamp = Date().timeIntervalSince1970
         let uniqueIdentifier = UUID().uuidString
@@ -89,7 +90,8 @@ final class NoteFirestore: NoteType {
     
      /// Method to delete all notes
     func deleteAllNotes(callback: @escaping (Bool) -> Void) {
-        db.collection(Constants.FStore.noteCollectionName).getDocuments { (querySnapshot, _) in
+        guard let uid = currentUID else { return }
+        db.collection(Constants.FStore.noteCollectionName).whereField(Constants.FStore.userUID, isEqualTo: uid).getDocuments { (querySnapshot, _) in
             guard let documents = querySnapshot?.documents else {
                 callback(false)
                 return

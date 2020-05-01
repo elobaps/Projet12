@@ -57,8 +57,10 @@ final class FamilyHomeViewController: UIViewController {
                     self.navigationItem.title = "Bonjour \(userData[0].firstName)"
                 }
             case .failure(let error):
-                self.presentAlert(titre: "Erreur", message: "Le chargement des informations a échoué")
-                print(error)
+                DispatchQueue.main.async {
+                    self.presentAlert(titre: "Erreur", message: "Le chargement des informations a échoué")
+                    print(error)
+                }
             }
         }
     }
@@ -72,12 +74,14 @@ final class FamilyHomeViewController: UIViewController {
                     self.updateQuote(data: quoteData)
                 }
             case .failure(let error):
-                self.presentAlert(titre: "Error", message: "Service non disponible")
-                print(error)
+                DispatchQueue.main.sync {
+                    self.presentAlert(titre: "Error", message: "Service non disponible")
+                    print(error)
+                }
             }
         }
     }
-
+    
     private func updateQuote(data: QuoteData) {
         quoteLabel.text = data.quoteText
         authorLabel.text = data.quoteAuthor

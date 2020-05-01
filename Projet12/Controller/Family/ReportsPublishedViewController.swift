@@ -12,7 +12,7 @@ final class ReportsPublishedViewController: UIViewController {
     
     // MARK: - Outlet
     
-    @IBOutlet private weak var reportsTableView: UITableView!
+    @IBOutlet private weak var reportsTableView: UITableView! { didSet { reportsTableView.tableFooterView = UIView() }}
     @IBOutlet private weak var navSecondView: UIView!
     
     // MARK: - Properties
@@ -101,6 +101,6 @@ extension ReportsPublishedViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         // cell's height
-        return 91
+        return 70
     }
 }

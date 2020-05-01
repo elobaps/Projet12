@@ -20,12 +20,10 @@ protocol ReportType {
 final class ReportService {
     
     private let report: ReportType
-    private let user: ReportType
     var currentUID: String? { return report.currentUID }
     
-    init(report: ReportType = ReportFirestore(), user: ReportType = ReportFirestore()) {
+    init(report: ReportType = ReportFirestore()) {
         self.report = report
-        self.user = user
     }
     
     func savedReport(identifier: String?, forUid: String, title: String, text: String, timestamp: TimeInterval, published: Bool, completion: @escaping (Bool) -> Void) {

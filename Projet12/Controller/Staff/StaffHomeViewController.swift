@@ -60,8 +60,10 @@ final class StaffHomeViewController: UIViewController {
                     self.updateWeather(data: weatherData)
                 }
             case .failure(let error):
-                self.presentAlert(titre: "Error", message: "Service non disponible")
-                print(error)
+                DispatchQueue.main.sync {
+                    self.presentAlert(titre: "Error", message: "Service non disponible")
+                    print(error)
+                }
             }
         }
     }
@@ -75,8 +77,10 @@ final class StaffHomeViewController: UIViewController {
                     self.updateQuote(data: quoteData)
                 }
             case .failure(let error):
-                self.presentAlert(titre: "Error", message: "Service non disponible")
-                print(error)
+                DispatchQueue.main.sync {
+                    self.presentAlert(titre: "Error", message: "Service non disponible")
+                    print(error)
+                }
             }
         }
     }

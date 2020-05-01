@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Network
 
 final class NotesViewController: UIViewController {
     
@@ -21,6 +22,8 @@ final class NotesViewController: UIViewController {
     var noteRepresentable: Note?
     private let noteService: NoteService = NoteService()
     var selectedSegue: Int = Int()
+    var isConnectionOK: Bool = true
+    private let monitor = NWPathMonitor()
     
     // MARK: - View Life Cycle
     
@@ -30,6 +33,11 @@ final class NotesViewController: UIViewController {
         navSecondView.configureNavSecondView()
         
         noteTableView.register(UINib(nibName: Constants.Cell.noteNibName, bundle: nil), forCellReuseIdentifier: Constants.Cell.noteCellIdentifier)
+        
+        monitor.start(queue: DispatchQueue.global(qos: .background))
+        monitor.pathUpdateHandler = { path in
+            self.isConnectionOK = path.status == .satisfied
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,13 +45,21 @@ final class NotesViewController: UIViewController {
         loadedNotes()
     }
     
+    deinit {
+        monitor.cancel()
+    }
+    
     // MARK: - Actions
     
     @IBAction private func unwindToNoteViewController(_ segue: UIStoryboardSegue) {}
     
     @IBAction private func addNoteButtonTapped(_ sender: UIButton) {
-        selectedSegue = 1
-        performSegue(withIdentifier: Constants.Segue.updateNoteSegue, sender: nil)
+        if isConnectionOK {
+            selectedSegue = 1
+            performSegue(withIdentifier: Constants.Segue.updateNoteSegue, sender: nil)
+        } else {
+            presentAlert(titre: "Erreur", message: "Veuillez vérifier la connexion internet")
+        }
     }
     
     @IBAction func clearButtonTapped(_ sender: Any) {
